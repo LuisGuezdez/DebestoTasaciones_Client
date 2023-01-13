@@ -3,7 +3,7 @@
     <div class="col">
       <h1 class="text-center mb-5">Lista de usuarios</h1>      
       <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
-        <button type="submit" class="btn btn-primary">Generar usuarios</button>
+        <button type="submit" class="btn btn-primary" (ngSubmit)="onSubmit()">Generar usuarios</button>
         <input type="number" id="quantity" name="quantity" min="1" max="10">
         <a [routerLink]="['/admin/usuario/new']" class="btn btn-primary mx-3">Crear usuario</a>
         <app-search-unrouted [placeHolder]="'Buscar usuario'" (onSearch)="setFilter( $event )"></app-search-unrouted>

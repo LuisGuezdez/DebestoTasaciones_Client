@@ -52,33 +52,37 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
       })
     }
 
-    setPage(e: number) {
-      this.page = (e - 1);
-      this.getPage();
+  setPage(e: number) {
+    this.page = (e - 1);
+    this.getPage();
+  }
+
+  setRpp(rpp: number) {
+    this.numberOfElements = rpp;
+    this.getPage();
+  }
+
+  setFilter(term: string): void {
+    this.strTermFilter = term;
+    this.getPage();
+  }
+
+  setFilterByUsertype(id: number): void {
+    this.id_usertypeFilter = id;
+    this.getPage();
+  }
+
+  setOrder(order: string): void {
+    this.sortField = order;
+    if (this.sortDirection == "asc") {
+      this.sortDirection = "desc";
+    } else {
+      this.sortDirection = "asc";
     }
-  
-    setRpp(rpp: number) {
-      this.numberOfElements = rpp;
-      this.getPage();
-    }
-  
-    setFilter(term: string): void {
-      this.strTermFilter = term;
-      this.getPage();
-    }
-  
-    setFilterByUsertype(id: number): void {
-      this.id_usertypeFilter = id;
-      this.getPage();
-    }
-  
-    setOrder(order: string): void {
-      this.sortField = order;
-      if (this.sortDirection == "asc") {
-        this.sortDirection = "desc";
-      } else {
-        this.sortDirection = "asc";
-      }
-      this.getPage();
-    }
+    this.getPage();
+  }
+
+  onSubmit() {
+    this.oUsuarioService.generate
+  }
 }
