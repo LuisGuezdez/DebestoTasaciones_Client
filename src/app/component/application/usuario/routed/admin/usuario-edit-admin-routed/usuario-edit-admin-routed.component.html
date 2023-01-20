@@ -19,7 +19,7 @@
               formControlName="nombre">
             <div id="inputNameFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['minlength']">
-              La longitud mínima es de 5 caracteres.
+              La longitud mínima es de 3 caracteres.
             </div>
             <div id="inputNameFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['maxlength']">
@@ -44,11 +44,11 @@
               formControlName="apellidos">
             <div id="inputSurnameFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.apellidos.dirty &&  oForm.controls.apellidos.errors?.['minlength']">
-              La longitud mínima es de 5 caracteres.
+              La longitud mínima es de 3 caracteres.
             </div>
             <div id="inputSurnameFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.apellidos.dirty &&  oForm.controls.apellidos.errors?.['maxlength']">
-              La longitud máxima es de 10 caracteres.
+              La longitud máxima es de 30 caracteres.
             </div>
             <div id="inputSurnameFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.apellidos.dirty &&  oForm.controls.apellidos.errors?.['required']">
@@ -102,23 +102,52 @@
         </div>
 
         <div class="mb-3 row">
-          <label for="inputTeam" class="col-sm-2 col-form-label">ID de Sucursal</label>
-          <div class="col-sm-4 has-validation">
-            <input type="text" class="form-control" id="inputTeam" formControlName="id_sucursal">
-            <div id="inputUsernameFeedback" class="invalid-feedback"
+          <label for="inputSucursal" class="col-sm-2 col-form-label">ID Sucursal</label>
+          <div class="col-sm-6 has-validation">
+            <div class="input-group">
+              <span class="input-group-text">{{sucursalDescription}}</span>
+              <input type="text" class="form-control" formControlName="id_sucursal" 
+              
+              
+              (keyup)="updateSucursalDescription(oForm.controls.id_sucursal.value)"
+              
+              [ngClass]="{'is-valid' : 
+              oForm.controls.id_sucursal.dirty && !oForm.controls.id_sucursal.errors?.['required'] &&
+               !oForm.controls.id_sucursal.errors?.['pattern'] && !oForm.controls.id_sucursal.errors?.['incorrect'],
+                'is-invalid' :  (oForm.controls.id_sucursal.dirty &&  oForm.controls.id_sucursal.errors?.['required'] )
+                ||  
+                ( oForm.controls.id_sucursal.dirty &&  oForm.controls.id_sucursal.errors?.['incorrect'])
+              }">
+              <button type="button" class="btn btn-primary" (click)="openModalFindSucursal()">Buscar</button>
+            </div>
+            <div class="text-danger"
               *ngIf="oForm.controls.id_sucursal.dirty &&  oForm.controls.id_sucursal.errors?.['required']">
               El campo es obligatorio.
             </div>
           </div>
-
         </div>
 
 
         <div class="mb-3 row">
           <label for="inputUsertype" class="col-sm-2 col-form-label">ID de Tipo Usuario</label>
-          <div class="col-sm-4 has-validation">
-            <input type="text" class="form-control" id="inputUsertype" formControlName="id_tipousuario">
-            <div id="inputUsernameFeedback" class="invalid-feedback"
+          <div class="col-sm-6 has-validation">
+            <div class="input-group">
+              <span class="input-group-text">{{usertypeDescription}}</span>
+              <input type="text" class="form-control" formControlName="id_tipousuario" 
+              
+              
+              (keyup)="updateTipousuarioDescription(oForm.controls.id_tipousuario.value)"
+              
+              [ngClass]="{'is-valid' : 
+              oForm.controls.id_tipousuario.dirty && !oForm.controls.id_tipousuario.errors?.['required'] &&
+               !oForm.controls.id_tipousuario.errors?.['pattern'] && !oForm.controls.id_tipousuario.errors?.['incorrect'],
+                'is-invalid' :  (oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['required'] )
+                ||  
+                ( oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['incorrect'])
+              }">
+              <button type="button" class="btn btn-primary" (click)="openModalFindTipousuario()">Buscar</button>
+            </div>
+            <div class="text-danger"
               *ngIf="oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['required']">
               El campo es obligatorio.
             </div>
@@ -144,6 +173,44 @@
       <div class="modal-body">
 
         {{modalContent}}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="findSucursal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <app-sucursal-finder-admin-unrouted (closeEvent)="closeSucursalModal($event)"></app-sucursal-finder-admin-unrouted>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="findTipousuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <app-tipousuario-finder-admin-unrouted (closeEvent)="closeTipousuarioModal($event)"></app-tipousuario-finder-admin-unrouted>
 
       </div>
       <div class="modal-footer">

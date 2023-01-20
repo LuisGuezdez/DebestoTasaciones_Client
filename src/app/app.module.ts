@@ -19,6 +19,8 @@ import { UsuarioDetailAdminUnroutedComponent } from './component/application/usu
 import { UsuarioRemoveAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-remove-admin-routed/usuario-remove-admin-routed.component';
 import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-new-admin-routed/usuario-new-admin-routed.component';
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
+import { SucursalFinderAdminUnroutedComponent } from './component/application/sucursal/unrouted/admin/sucursal-finder-admin-unrouted/sucursal-finder-admin-unrouted.component';
+import { TipousuarioFinderAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-finder-admin-unrouted/tipousuario-finder-admin-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { UsuarioEditAdminRoutedComponent } from './component/application/usuario
     PaginationComponent,
     SearchUnroutedComponent,
     DropdownRegisterPageComponent,
-    PaginationUnroutedComponent
+    PaginationUnroutedComponent,
+    SucursalFinderAdminUnroutedComponent,
+    TipousuarioFinderAdminUnroutedComponent
   ],
   imports: [
     BrowserModule,

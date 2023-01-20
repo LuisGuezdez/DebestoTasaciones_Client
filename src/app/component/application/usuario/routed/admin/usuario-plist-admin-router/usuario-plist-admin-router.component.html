@@ -3,13 +3,16 @@
     <div class="col">
       <h1 class="text-center mb-5">Lista de usuarios</h1>      
       <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
-        <button type="submit" class="btn btn-primary" (ngSubmit)="onSubmit()">Generar usuarios</button>
-        <input type="number" id="quantity" name="quantity" min="1" max="10">
+        <div>
+        <button type="submit" id="boton" class="btn btn-primary" (click)="generate()" [disabled]="numero > 1000 || numero < 1 || numero == null">Generar usuarios</button>
+        <input type="number" id="quantity" name="quantity" min="1" max="1000" [(ngModel)]='numero'>
+        <div *ngIf="numero > 1000 || numero < 1 " class="text-danger">
+          Debe ser menor que 1000 o mayor que 0.
+        </div>
+        </div>
         <a [routerLink]="['/admin/usuario/new']" class="btn btn-primary mx-3">Crear usuario</a>
         <app-search-unrouted [placeHolder]="'Buscar usuario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
-        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.numberOfElements"
-          (eeRpp)="this.setRpp($event)">
-        </app-dropdown-register-page>
+        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.size" (eeRpp)="this.setRpp($event)"></app-dropdown-register-page>
       </div>
       <div class="col-md">
         <app-pagination-unrouted [nPage]="responseFromServer.number + 1" [nTotalPages]="responseFromServer.totalPages"
@@ -34,9 +37,18 @@
               <fa-icon *ngIf="sortField=='nombre'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
               <fa-icon *ngIf="sortField=='nombre'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
             </th>
-            <th (click)="setOrder('apellidos')">Apellidos</th>
-            <th (click)="setOrder('email')">Email</th>
-            <th (click)="setOrder('username')">Username</th>
+            <th (click)="setOrder('apellidos')">Apellidos
+              <fa-icon *ngIf="sortField=='apellidos'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+              <fa-icon *ngIf="sortField=='apellidos'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+            </th>
+            <th (click)="setOrder('email')">Email
+              <fa-icon *ngIf="sortField=='email'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+              <fa-icon *ngIf="sortField=='email'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+            </th>
+            <th (click)="setOrder('username')">Username
+              <fa-icon *ngIf="sortField=='username'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+              <fa-icon *ngIf="sortField=='username'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+            </th>
             <th>Tipo Usuario</th>
             <th>Sucursal</th>
             <th>Acciones</th>

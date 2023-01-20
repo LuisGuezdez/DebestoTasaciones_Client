@@ -21,6 +21,7 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
   page: number = 0;
   sortField: string = "";
   sortDirection: string = "";
+  numero !: number;
   //
   faEye = faEye;
   faUserPen = faUserPen;
@@ -44,6 +45,7 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
           this.responseFromServer = resp;
           if (this.page > resp.totalPages - 1) {
             this.page = resp.totalPages - 1;
+            this.getPage();
           }
         },
         error: (err: HttpErrorResponse) => {
@@ -82,7 +84,9 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
     this.getPage();
   }
 
-  onSubmit() {
-    this.oUsuarioService.generate
+  generate() {
+    console.log(this.numero);
+    this.oUsuarioService.generate(this.numero);
+    this.getPage();
   }
 }
