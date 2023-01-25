@@ -86,7 +86,8 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
 
   generate() {
     console.log(this.numero);
-    this.oUsuarioService.generate(this.numero);
+    console.log(this.oUsuarioService.generate(this.numero));
+    
     this.getPage();
   }
 }
