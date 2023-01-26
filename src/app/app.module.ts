@@ -21,6 +21,8 @@ import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
 import { SucursalFinderAdminUnroutedComponent } from './component/application/sucursal/unrouted/admin/sucursal-finder-admin-unrouted/sucursal-finder-admin-unrouted.component';
 import { TipousuarioFinderAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-finder-admin-unrouted/tipousuario-finder-admin-unrouted.component';
+import { SucursalPlistAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-plist-admin-routed/sucursal-plist-admin-routed.component';
+import { UsuarioBackButtonUnroutedComponent } from './component/application/usuario/unrouted/usuario-backButton-unrouted/usuario-backButton-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +34,14 @@ import { TipousuarioFinderAdminUnroutedComponent } from './component/application
     UsuarioDetailAdminUnroutedComponent,
     UsuarioRemoveAdminRoutedComponent,
     UsuarioNewAdminRoutedComponent,
+    UsuarioBackButtonUnroutedComponent,
     UsuarioEditAdminRoutedComponent,
+    SucursalPlistAdminRoutedComponent,
+    SucursalFinderAdminUnroutedComponent,
     PaginationComponent,
     SearchUnroutedComponent,
     DropdownRegisterPageComponent,
     PaginationUnroutedComponent,
-    SucursalFinderAdminUnroutedComponent,
     TipousuarioFinderAdminUnroutedComponent
   ],
   imports: [

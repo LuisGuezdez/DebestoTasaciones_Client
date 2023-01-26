@@ -28,6 +28,8 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
   faTrash = faTrash;
   faArrowUp = faArrowUp;
   faArrowDown = faArrowDown;
+  //
+  generatedUsers!: number;
 
   constructor(
     private oUsuarioService: UsuarioService
@@ -38,7 +40,7 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
   }
 
   getPage() {
-    this.oUsuarioService.getUsuariosPlist(this.page, this.numberOfElements, 
+    this.oUsuarioService.getUsuariosPlist(this.page, this.numberOfElements,
       this.strTermFilter, this.id_usertypeFilter, this.sortField, this.sortDirection)
       .subscribe({
         next: (resp: IPage<IUsuario>) => {
@@ -52,7 +54,7 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
           console.log(err);
         }
       })
-    }
+  }
 
   setPage(e: number) {
     this.page = (e - 1);
@@ -86,8 +88,18 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
 
   generate() {
     console.log(this.numero);
-    console.log(this.oUsuarioService.generate(this.numero));
-    
-    this.getPage();
+    this.oUsuarioService.generate(this.numero)
+      .subscribe({
+        next: (resp: number) => {
+          this.generatedUsers = resp;
+          alert("ahora hay " + this.generatedUsers + " usuarios");
+          this.getPage();
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err.message);
+        }
+      })
+
+
   }
 }

@@ -4,7 +4,7 @@
       <h1 class="text-center mb-5">Lista de usuarios</h1>      
       <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
         <div>
-        <button type="submit" id="boton" class="btn btn-primary" (click)="generate()" [disabled]="numero > 1000 || numero < 1 || numero == null">Generar usuarios</button>
+        <button type="submit" id="boton" class="btn btn-primary mx-3" (click)="generate()" [disabled]="numero > 1000 || numero < 1 || numero == null">Generar usuarios</button>
         <input type="number" id="quantity" name="quantity" min="1" max="1000" [(ngModel)]='numero'>
         <div *ngIf="numero > 1000 || numero < 1 " class="text-danger">
           Debe ser menor que 1000 o mayor que 0.

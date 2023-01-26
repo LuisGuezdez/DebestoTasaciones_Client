@@ -7,6 +7,7 @@ import { UsuarioRemoveAdminRoutedComponent } from './component/application/usuar
 import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-new-admin-routed/usuario-new-admin-routed.component';
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
 import { SucursalFinderAdminUnroutedComponent } from './component/application/sucursal/unrouted/admin/sucursal-finder-admin-unrouted/sucursal-finder-admin-unrouted.component';
+import { SucursalPlistAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-plist-admin-routed/sucursal-plist-admin-routed.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'admin/usuario/remove/:id', component: UsuarioRemoveAdminRoutedComponent },
   { path: 'admin/usuario/new', component: UsuarioNewAdminRoutedComponent },
   { path: 'admin/usuario/edit/:id', component: UsuarioEditAdminRoutedComponent},
-  { path: 'admin/sucursal/plist', component: SucursalFinderAdminUnroutedComponent}
+  { path: 'admin/sucursal/plist', component: SucursalPlistAdminRoutedComponent}
 
 ];
 

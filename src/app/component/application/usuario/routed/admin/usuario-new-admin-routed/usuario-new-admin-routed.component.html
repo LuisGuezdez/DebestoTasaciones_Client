@@ -127,7 +127,7 @@
         </div>
 
 
-        <div class="mb-3 row">
+        <div class="mb-5 row">
           <label for="inputUsertype" class="col-sm-2 col-form-label">ID de Tipo Usuario</label>
           <div class="col-sm-6 has-validation">
             <div class="input-group">
@@ -155,6 +155,8 @@
 
         <button type="submit" class="btn btn-primary"
           [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
+        
+        <app-usuario-backButton-unrouted class="container"></app-usuario-backButton-unrouted>
 
       </form>
 
