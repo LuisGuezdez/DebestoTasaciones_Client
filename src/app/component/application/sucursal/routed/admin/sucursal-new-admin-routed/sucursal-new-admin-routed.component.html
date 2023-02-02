@@ -1,0 +1,113 @@
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Crear Sucursal</h1>
+
+      <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+        
+
+        <div class="mb-3 row">
+          <label for="inputName" class="col-sm-2 col-form-label">Nombre</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['required'] &&
+            oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['minlength'] 
+              && oForm.controls.nombre.dirty && !oForm.controls.nombre.errors?.['maxlength'],
+              'is-invalid' :  oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['minlength'] 
+              ||  oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['maxlength'] ||  
+              oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['required']}" id="inputName"
+              formControlName="nombre">
+            <div id="inputNameFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['minlength']">
+              La longitud mínima es de 3 caracteres.
+            </div>
+            <div id="inputNameFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['maxlength']">
+              La longitud máxima es de 50 caracteres.
+            </div>
+            <div id="inputNameFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.nombre.dirty &&  oForm.controls.nombre.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputLocalidad" class="col-sm-2 col-form-label">Localidad</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.localidad.dirty && !oForm.controls.localidad.errors?.['required'] &&
+            oForm.controls.localidad.dirty && !oForm.controls.localidad.errors?.['minlength'] 
+              && oForm.controls.localidad.dirty && !oForm.controls.localidad.errors?.['maxlength'],
+              'is-invalid' :  oForm.controls.localidad.dirty &&  oForm.controls.localidad.errors?.['minlength'] 
+              ||  oForm.controls.localidad.dirty &&  oForm.controls.localidad.errors?.['maxlength'] ||  
+              oForm.controls.localidad.dirty &&  oForm.controls.localidad.errors?.['required']}" id="inputSurname"
+              formControlName="localidad">
+            <div id="inputLocalidadFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.localidad.dirty &&  oForm.controls.localidad.errors?.['minlength']">
+              La longitud mínima es de 3 caracteres.
+            </div>
+            <div id="inputLocalidadFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.localidad.dirty &&  oForm.controls.localidad.errors?.['maxlength']">
+              La longitud máxima es de 50 caracteres.
+            </div>
+            <div id="inputLocalidadFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.localidad.dirty &&  oForm.controls.localidad.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputCalle" class="col-sm-2 col-form-label">Calle</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.calle.dirty && !oForm.controls.calle.errors?.['required'] &&
+            oForm.controls.calle.dirty && !oForm.controls.calle.errors?.['minlength'] 
+              && oForm.controls.calle.dirty && !oForm.controls.calle.errors?.['maxlength'],
+              'is-invalid' :  oForm.controls.calle.dirty &&  oForm.controls.calle.errors?.['minlength'] 
+              ||  oForm.controls.calle.dirty &&  oForm.controls.calle.errors?.['maxlength'] ||  
+              oForm.controls.calle.dirty &&  oForm.controls.calle.errors?.['required']}" id="inputSurname"
+              formControlName="calle">
+            <div id="inputCalleFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.calle.dirty &&  oForm.controls.calle.errors?.['minlength']">
+              La longitud mínima es de 3 caracteres.
+            </div>
+            <div id="inputCalleFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.calle.dirty &&  oForm.controls.calle.errors?.['maxlength']">
+              La longitud máxima es de 50 caracteres.
+            </div>
+            <div id="inputCalleFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.calle.dirty &&  oForm.controls.calle.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputPostal" class="col-sm-2 col-form-label">Postal</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.postal.dirty && !oForm.controls.postal.errors?.['required'] &&
+            oForm.controls.postal.dirty && !oForm.controls.postal.errors?.['pattern'],
+              'is-invalid' :  oForm.controls.postal.dirty &&  oForm.controls.postal.errors?.['pattern'] ||
+              oForm.controls.postal.dirty &&  oForm.controls.postal.errors?.['required']}" id="inputPostal"
+              formControlName="postal">
+            <div id="inputPostalFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.postal.dirty &&  oForm.controls.postal.errors?.['pattern']">
+              El formato no es adecuado
+            </div>
+            <div id="inputPostalFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.postal.dirty &&  oForm.controls.postal.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary"
+          [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
+        
+        <app-sucursal-backButton-unrouted class="container"></app-sucursal-backButton-unrouted>
+
+      </form>
+
+    </div>
+  </div>
+</div>

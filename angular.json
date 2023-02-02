@@ -5,7 +5,9 @@
   "projects": {
     "DebestoTasaciones_Clientes": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+            "strict": false
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",

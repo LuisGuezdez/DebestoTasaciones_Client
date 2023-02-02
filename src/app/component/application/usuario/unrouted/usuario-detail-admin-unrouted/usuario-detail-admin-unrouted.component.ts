@@ -24,6 +24,10 @@ export class UsuarioDetailAdminUnroutedComponent implements OnInit {
     this.oUsuarioService.getOne(this.id).subscribe({
       next: (data: IUsuario) => {
         this.oUsuario = data;
+        let coches = document.getElementById("coches");
+        if (this.oUsuario.tipousuario.id == 2) {
+          coches!.innerHTML = "<td>Coches</td><td>" + this.oUsuario.coches + "</td>"
+        }
         console.log(data);
       }
     })

@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { baseURL } from "src/environments/environment";
 import { IPage } from "../model/generic-types-interface";
-import { ISucursal, SucursalResponse } from "../model/sucursal-interface";
+import { ISucursal, ISucursal2Send, SucursalResponse } from "../model/sucursal-interface";
 
 @Injectable({
     providedIn: 'root'
@@ -28,9 +28,20 @@ import { ISucursal, SucursalResponse } from "../model/sucursal-interface";
       return this.oHttp.get<IPage<ISucursal>>(this.url, { params: params });
     }
   
-  
     getOne(id: number): Observable<ISucursal> {
       return this.oHttp.get<ISucursal>(this.url + "/" + id);
+    }
+
+    removeOne(id: number): Observable<number> {
+      return this.oHttp.delete<number>(this.url + '/' + id);
+    }
+
+    newOne(oSucursal2Send: ISucursal2Send): Observable<number> {       
+      return this.oHttp.post<number>(this.url, oSucursal2Send);
+    }
+
+    updateOne(oSucursal2Send: ISucursal2Send): Observable<number> {
+      return this.oHttp.put<number>(this.url, oSucursal2Send);
     }
 
   }

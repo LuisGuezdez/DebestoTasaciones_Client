@@ -1,3 +1,4 @@
+import { FormControl } from "@angular/forms";
 import { Pageable, Sort } from "./shared-interface";
 
 export interface ISucursal {
@@ -23,4 +24,19 @@ export interface SucursalResponse {
     first:            boolean;
     size:             number;
     empty:            boolean;
+}
+
+export interface ISucursal2Form {
+    id:          FormControl<number>;
+    nombre:      FormControl<string>;
+    localidad:   FormControl<string>;
+    calle:       FormControl<string>;
+    postal:    FormControl<number>;
+}
+export interface ISucursal2Send {
+    id:          number;
+    nombre:      string;
+    localidad:   string;
+    calle:       string;
+    postal:      number;
 }

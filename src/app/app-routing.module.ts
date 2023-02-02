@@ -8,6 +8,10 @@ import { UsuarioNewAdminRoutedComponent } from './component/application/usuario/
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
 import { SucursalFinderAdminUnroutedComponent } from './component/application/sucursal/unrouted/admin/sucursal-finder-admin-unrouted/sucursal-finder-admin-unrouted.component';
 import { SucursalPlistAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-plist-admin-routed/sucursal-plist-admin-routed.component';
+import { SucursalViewAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-view-admin-routed/sucursal-view-admin-routed.component';
+import { SucursalRemoveAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-remove-admin-routed/sucursal-remove-admin-routed.component';
+import { SucursalEditAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-edit-admin-routed/sucursal-edit-admin-routed.component';
+import { SucursalNewAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-new-admin-routed/sucursal-new-admin-routed.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +21,12 @@ const routes: Routes = [
   { path: 'admin/usuario/remove/:id', component: UsuarioRemoveAdminRoutedComponent },
   { path: 'admin/usuario/new', component: UsuarioNewAdminRoutedComponent },
   { path: 'admin/usuario/edit/:id', component: UsuarioEditAdminRoutedComponent},
-  { path: 'admin/sucursal/plist', component: SucursalPlistAdminRoutedComponent}
+  { path: 'admin/sucursal/plist', component: SucursalPlistAdminRoutedComponent},
+  { path: 'admin/sucursal/view/:id', component: SucursalViewAdminRoutedComponent },
+  { path: 'admin/sucursal/remove/:id', component: SucursalRemoveAdminRoutedComponent},
+  { path: 'admin/sucursal/edit/:id', component: SucursalEditAdminRoutedComponent},
+  { path: 'admin/sucursal/new', component: SucursalNewAdminRoutedComponent },
+
 
 ];
 

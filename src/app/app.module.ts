@@ -23,6 +23,12 @@ import { SucursalFinderAdminUnroutedComponent } from './component/application/su
 import { TipousuarioFinderAdminUnroutedComponent } from './component/application/tipousuario/unrouted/admin/tipousuario-finder-admin-unrouted/tipousuario-finder-admin-unrouted.component';
 import { SucursalPlistAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-plist-admin-routed/sucursal-plist-admin-routed.component';
 import { UsuarioBackButtonUnroutedComponent } from './component/application/usuario/unrouted/usuario-backButton-unrouted/usuario-backButton-unrouted.component';
+import { SucursalDetailAdminUnroutedComponent } from './component/application/sucursal/unrouted/admin/sucursal-detail-admin-unrouted/sucursal-detail-admin-unrouted.component';
+import { SucursalViewAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-view-admin-routed/sucursal-view-admin-routed.component';
+import { SucursalBackButtonUnroutedComponent } from './component/application/sucursal/unrouted/admin/sucursal-backButton-unrouted/sucursal-backButton-unrouted.component';
+import { SucursalRemoveAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-remove-admin-routed/sucursal-remove-admin-routed.component';
+import { SucursalNewAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-new-admin-routed/sucursal-new-admin-routed.component';
+import { SucursalEditAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-edit-admin-routed/sucursal-edit-admin-routed.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +44,12 @@ import { UsuarioBackButtonUnroutedComponent } from './component/application/usua
     UsuarioEditAdminRoutedComponent,
     SucursalPlistAdminRoutedComponent,
     SucursalFinderAdminUnroutedComponent,
+    SucursalDetailAdminUnroutedComponent,
+    SucursalViewAdminRoutedComponent,
+    SucursalBackButtonUnroutedComponent,
+    SucursalRemoveAdminRoutedComponent,
+    SucursalNewAdminRoutedComponent,
+    SucursalEditAdminRoutedComponent,
     PaginationComponent,
     SearchUnroutedComponent,
     DropdownRegisterPageComponent,
