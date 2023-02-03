@@ -1,0 +1,191 @@
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Editar Coche con id: {{id}}</h1>
+
+      <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+        
+
+        <div class="mb-3 row">
+          <label for="inputMarca" class="col-sm-2 col-form-label">Marca</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.marca.dirty && !oForm.controls.marca.errors?.['required'] &&
+            oForm.controls.marca.dirty && !oForm.controls.marca.errors?.['minlength'] 
+              && oForm.controls.marca.dirty && !oForm.controls.marca.errors?.['maxlength'],
+              'is-invalid' :  oForm.controls.marca.dirty &&  oForm.controls.marca.errors?.['minlength'] 
+              ||  oForm.controls.marca.dirty &&  oForm.controls.marca.errors?.['maxlength'] ||  
+              oForm.controls.marca.dirty &&  oForm.controls.marca.errors?.['required']}" id="inputMarca"
+              formControlName="marca">
+            <div id="inputMarcaFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.marca.dirty &&  oForm.controls.marca.errors?.['minlength']">
+              La longitud mínima es de 3 caracteres.
+            </div>
+            <div id="inputMarcaFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.marca.dirty &&  oForm.controls.marca.errors?.['maxlength']">
+              La longitud máxima es de 50 caracteres.
+            </div>
+            <div id="inputMarcaFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.marca.dirty &&  oForm.controls.marca.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputModelo" class="col-sm-2 col-form-label">Modelo</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.modelo.dirty && !oForm.controls.modelo.errors?.['required'] &&
+            oForm.controls.modelo.dirty && !oForm.controls.modelo.errors?.['minlength'] 
+              && oForm.controls.modelo.dirty && !oForm.controls.modelo.errors?.['maxlength'],
+              'is-invalid' :  oForm.controls.modelo.dirty &&  oForm.controls.modelo.errors?.['minlength'] 
+              ||  oForm.controls.modelo.dirty &&  oForm.controls.modelo.errors?.['maxlength'] ||  
+              oForm.controls.modelo.dirty &&  oForm.controls.modelo.errors?.['required']}" id="inputSurname"
+              formControlName="modelo">
+            <div id="inputModeloFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.modelo.dirty &&  oForm.controls.modelo.errors?.['minlength']">
+              La longitud mínima es de 3 caracteres.
+            </div>
+            <div id="inputModeloFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.modelo.dirty &&  oForm.controls.modelo.errors?.['maxlength']">
+              La longitud máxima es de 50 caracteres.
+            </div>
+            <div id="inputModeloFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.modelo.dirty &&  oForm.controls.modelo.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputAnyo" class="col-sm-2 col-form-label">Año</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.anyo.dirty && !oForm.controls.anyo.errors?.['required'] &&
+            oForm.controls.anyo.dirty && !oForm.controls.anyo.errors?.['pattern'],
+              'is-invalid' :  oForm.controls.anyo.dirty &&  oForm.controls.anyo.errors?.['pattern'] ||
+              oForm.controls.anyo.dirty &&  oForm.controls.anyo.errors?.['required']}" id="inputAnyo"
+              formControlName="anyo">
+            <div id="inputAnyoFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.anyo.dirty &&  oForm.controls.anyo.errors?.['pattern']">
+              El formato no es adecuado
+            </div>
+            <div id="inputAnyoFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.anyo.dirty &&  oForm.controls.anyo.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputKms" class="col-sm-2 col-form-label">Kilometros</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.kms.dirty && !oForm.controls.kms.errors?.['required'] &&
+            oForm.controls.kms.dirty && !oForm.controls.kms.errors?.['pattern'],
+              'is-invalid' :  oForm.controls.kms.dirty &&  oForm.controls.kms.errors?.['pattern'] ||
+              oForm.controls.kms.dirty &&  oForm.controls.kms.errors?.['required']}" id="inputKms"
+              formControlName="kms">
+            <div id="inputKmsFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.kms.dirty &&  oForm.controls.kms.errors?.['pattern']">
+              El formato no es adecuado
+            </div>
+            <div id="inputKmsFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.kms.dirty &&  oForm.controls.kms.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputKms" class="col-sm-2 col-form-label">Combustible</label>
+          <div class="col-sm-4 has-validation">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" formControlName="combustible" id="radio1" name="optradio" value="Gasolina" checked>
+              <label class="form-check-label" for="radio1">Gasolina</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" formControlName="combustible" id="radio2" name="optradio" value="Diesel">
+              <label class="form-check-label" for="radio2">Diesel</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" formControlName="combustible" id="radio3" name="optradio" value="Gas">
+              <label class="form-check-label" for="radio3">Gas</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputUsuario" class="col-sm-2 col-form-label">ID Usuario</label>
+          <div class="col-sm-6 has-validation">
+            <div class="input-group">
+              <span class="input-group-text">{{usuarioDescription}}</span>
+              <input type="text" class="form-control" formControlName="id_usuario" 
+              
+              
+              (keyup)="updateUsuarioDescription(oForm.controls.id_usuario.value)"
+              
+              [ngClass]="{'is-valid' : 
+              oForm.controls.id_usuario.dirty && !oForm.controls.id_usuario.errors?.['required'] &&
+               !oForm.controls.id_usuario.errors?.['pattern'] && !oForm.controls.id_usuario.errors?.['incorrect'],
+                'is-invalid' :  (oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required'] )
+                ||  
+                ( oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['incorrect'])
+              }">
+              <button type="button" class="btn btn-primary" (click)="openModalFindUsuario()">Buscar</button>
+            </div>
+            <div class="text-danger"
+              *ngIf="oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        
+
+        <button type="submit" class="btn btn-primary"
+          [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
+        
+        <app-coche-bacButton-unrouted class="container"></app-coche-bacButton-unrouted>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" [id]="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        {{modalContent}}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="findUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <app-usuario-finder-admin-unrouted (closeEvent)="closeUsuarioModal($event)"></app-usuario-finder-admin-unrouted>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

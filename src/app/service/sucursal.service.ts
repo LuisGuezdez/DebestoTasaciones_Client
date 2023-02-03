@@ -18,12 +18,18 @@ import { ISucursal, ISucursal2Send, SucursalResponse } from "../model/sucursal-i
       this.url = `${baseURL}${this.entityURL}`;
     }
   
-    getSucursalsPlist(page: number, size: number, termino: string): Observable<IPage<ISucursal>> {
+    getSucursalsPlist(page: number, size: number, termino: string, strSortField: string, strOrderDirection: string): Observable<IPage<ISucursal>> {
       let params = new HttpParams()
         .set("filter", termino)
         .set("page", page)
         .set("size", size);
-  
+        if (strSortField != "") { //&sort=codigo,[asc|desc]
+          if (strOrderDirection != "") {
+            params = params.set("sort", strSortField + "," + strOrderDirection);
+          } else {
+            params = params.set("sort", strSortField);
+          }
+        }
       let url: string = `${baseURL}${this.entityURL}`;
       return this.oHttp.get<IPage<ISucursal>>(this.url, { params: params });
     }

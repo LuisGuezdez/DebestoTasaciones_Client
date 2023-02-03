@@ -1,0 +1,193 @@
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Realizar Compra</h1>
+
+      <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3 row">
+          <label for="inputPrecio" class="col-sm-2 col-form-label">Precio</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.precio.dirty && !oForm.controls.precio.errors?.['required'] &&
+            oForm.controls.precio.dirty && !oForm.controls.precio.errors?.['pattern'],
+              'is-invalid' :  oForm.controls.precio.dirty &&  oForm.controls.precio.errors?.['pattern'] ||
+              oForm.controls.precio.dirty &&  oForm.controls.precio.errors?.['required']}" id="inputPrecio"
+              formControlName="precio">
+            <div id="inputPrecioFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.precio.dirty &&  oForm.controls.precio.errors?.['pattern']">
+              El formato no es adecuado
+            </div>
+            <div id="inputPrecioFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.precio.dirty &&  oForm.controls.precio.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputUsuario" class="col-sm-2 col-form-label">ID Vendedor</label>
+          <div class="col-sm-6 has-validation">
+            <div class="input-group">
+              <span class="input-group-text">{{usuarioDescription}}</span>
+              <input type="text" class="form-control" formControlName="id_usuario" 
+              
+              
+              (keyup)="updateUsuarioDescription(oForm.controls.id_usuario.value)"
+              
+              [ngClass]="{'is-valid' : 
+              oForm.controls.id_usuario.dirty && !oForm.controls.id_usuario.errors?.['required'] &&
+               !oForm.controls.id_usuario.errors?.['pattern'] && !oForm.controls.id_usuario.errors?.['incorrect'],
+                'is-invalid' :  (oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required'] )
+                ||  
+                ( oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['incorrect'])
+              }">
+              <button type="button" class="btn btn-primary" (click)="openModalFindUsuario()">Buscar</button>
+            </div>
+            <div class="text-danger"
+              *ngIf="oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputCoche" class="col-sm-2 col-form-label">ID Coche</label>
+          <div class="col-sm-6 has-validation">
+            <div class="input-group">
+              <span class="input-group-text">{{cocheDescription}}</span>
+              <input type="text" class="form-control" formControlName="id_coche" 
+              
+              
+              (keyup)="updateCocheDescription(oForm.controls.id_coche.value)"
+              
+              [ngClass]="{'is-valid' : 
+              oForm.controls.id_coche.dirty && !oForm.controls.id_coche.errors?.['required'] &&
+               !oForm.controls.id_coche.errors?.['pattern'] && !oForm.controls.id_coche.errors?.['incorrect'],
+                'is-invalid' :  (oForm.controls.id_coche.dirty &&  oForm.controls.id_coche.errors?.['required'] )
+                ||  
+                ( oForm.controls.id_coche.dirty &&  oForm.controls.id_coche.errors?.['incorrect'])
+              }">
+              <button type="button" class="btn btn-primary" (click)="openModalFindCoche()">Buscar</button>
+            </div>
+            <div class="text-danger"
+              *ngIf="oForm.controls.id_coche.dirty &&  oForm.controls.id_coche.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="inputSucursal" class="col-sm-2 col-form-label">ID Sucursal</label>
+          <div class="col-sm-6 has-validation">
+            <div class="input-group">
+              <span class="input-group-text">{{sucursalDescription}}</span>
+              <input type="text" class="form-control" formControlName="id_sucursal" 
+              
+              
+              (keyup)="updateSucursalDescription(oForm.controls.id_sucursal.value)"
+              
+              [ngClass]="{'is-valid' : 
+              oForm.controls.id_sucursal.dirty && !oForm.controls.id_sucursal.errors?.['required'] &&
+               !oForm.controls.id_sucursal.errors?.['pattern'] && !oForm.controls.id_sucursal.errors?.['incorrect'],
+                'is-invalid' :  (oForm.controls.id_sucursal.dirty &&  oForm.controls.id_sucursal.errors?.['required'] )
+                ||  
+                ( oForm.controls.id_sucursal.dirty &&  oForm.controls.id_sucursal.errors?.['incorrect'])
+              }">
+              <button type="button" class="btn btn-primary" (click)="openModalFindSucursal()">Buscar</button>
+            </div>
+            <div class="text-danger"
+              *ngIf="oForm.controls.id_sucursal.dirty &&  oForm.controls.id_sucursal.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        
+
+        <button type="submit" class="btn btn-primary"
+          [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
+        
+        <app-coche-bacButton-unrouted class="container"></app-coche-bacButton-unrouted>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" [id]="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        {{modalContent}}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="findUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <app-usuario-finder-admin-unrouted (closeEvent)="closeUsuarioModal($event)"></app-usuario-finder-admin-unrouted>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="findCoche" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <app-coche-finder-admin-unrouted (closeEvent)="closeCocheModal($event)"></app-coche-finder-admin-unrouted>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="findSucursal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <app-sucursal-finder-admin-unrouted (closeEvent)="closeSucursalModal($event)"></app-sucursal-finder-admin-unrouted>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

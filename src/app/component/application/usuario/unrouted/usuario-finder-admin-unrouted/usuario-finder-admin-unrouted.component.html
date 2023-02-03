@@ -1,0 +1,58 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Lista de Usuarios</h1>
+      <div class="col-md text-end d-flex justify-content-center align-items-center mb-3">
+        <app-search-unrouted [placeHolder]="'Buscar Usuario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.size" (eeRpp)="this.setRpp($event)"></app-dropdown-register-page>
+
+      </div>
+      <div class="col-md text-center">
+        <app-pagination-unrouted [nPage]="responseFromServer.number + 1" [nTotalPages]="responseFromServer.totalPages"
+          (eePage)="setPage($event)"></app-pagination-unrouted>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th (click)="setOrder('nombre')">Nombre
+              <fa-icon *ngIf="sortField=='nombre'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+              <fa-icon *ngIf="sortField=='nombre'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+            </th>
+            <th (click)="setOrder('apellidos')">Apellidos
+              <fa-icon *ngIf="sortField=='apellidos'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+              <fa-icon *ngIf="sortField=='apellidos'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+            </th>
+            <th (click)="setOrder('username')">Username
+              <fa-icon *ngIf="sortField=='username'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+              <fa-icon *ngIf="sortField=='username'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+            </th>
+            <th>Tipo Usuario</th>
+            <th (click)="setOrder('sucursal')">Sucursal
+              <fa-icon *ngIf="sortField=='sucursal'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+              <fa-icon *ngIf="sortField=='sucursal'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of this.responseFromServer.content">
+            <td *ngIf="usuario.tipousuario.id != 2">{{usuario.id}}</td>
+            <td *ngIf="usuario.tipousuario.id != 2">{{usuario.nombre}}</td>
+            <td *ngIf="usuario.tipousuario.id != 2">{{usuario.apellidos}}</td>
+            <td *ngIf="usuario.tipousuario.id != 2">{{usuario.username}}</td>
+            <td *ngIf="usuario.tipousuario.id != 2">{{usuario.tipousuario.tipo}}</td>
+            <td *ngIf="usuario.tipousuario.id != 2">{{usuario.sucursal.nombre}}</td>
+            <td *ngIf="usuario.tipousuario.id != 2">
+              <div class="btn-group" role="group" aria-label="Herramientas">
+                <button class="btn btn-sm btn-primary" (click)="selectionUsuario(usuario.id)">
+                  Seleccionar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

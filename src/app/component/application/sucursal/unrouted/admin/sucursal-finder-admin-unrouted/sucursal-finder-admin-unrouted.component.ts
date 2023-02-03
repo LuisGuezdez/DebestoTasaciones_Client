@@ -3,6 +3,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IPage } from 'src/app/model/generic-types-interface';
 import { ISucursal, SucursalResponse } from 'src/app/model/sucursal-interface';
 import { SucursalService } from 'src/app/service/sucursal.service';
+import { faEye, faUserPen, faTrash, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-sucursal-finder-admin-unrouted',
@@ -22,6 +24,12 @@ export class SucursalFinderAdminUnroutedComponent implements OnInit {
   sortField: string = "";
   sortDirection: string = "";
 
+  faEye = faEye;
+  faUserPen = faUserPen;
+  faTrash = faTrash;
+  faArrowUp = faArrowUp;
+  faArrowDown = faArrowDown;
+
   constructor(
     private oSucursalService: SucursalService
   ) { }
@@ -32,7 +40,7 @@ export class SucursalFinderAdminUnroutedComponent implements OnInit {
 
   getPage() {
     this.oSucursalService.getSucursalsPlist(this.page, this.numberOfElements, 
-      this.strTermFilter)
+      this.strTermFilter,this.sortField,this.sortDirection)
       .subscribe({
         next: (resp: IPage<ISucursal>) => {
           this.responseFromServer = resp;
@@ -47,6 +55,15 @@ export class SucursalFinderAdminUnroutedComponent implements OnInit {
       })
     }
     
+    setOrder(order: string): void {
+      this.sortField = order;
+      if (this.sortDirection == "asc") {
+        this.sortDirection = "desc";
+      } else {
+        this.sortDirection = "asc";
+      }
+      this.getPage();
+    }
 
     setPage(e: number) {
       this.page = (e - 1);

@@ -39,8 +39,8 @@ export class SucursalPlistAdminRoutedComponent implements OnInit {
   }
 
   getPage() {
-    this.oSucursalService.getSucursalsPlist(this.page, this.numberOfElements, 
-      this.strTermFilter)
+    this.oSucursalService.getSucursalsPlist(this.page, this.numberOfElements,
+      this.strTermFilter, this.sortField, this.sortDirection)
       .subscribe({
         next: (resp: IPage<ISucursal>) => {
           this.responseFromServer = resp;
@@ -55,6 +55,15 @@ export class SucursalPlistAdminRoutedComponent implements OnInit {
       })
     }
     
+    setOrder(order: string): void {
+      this.sortField = order;
+      if (this.sortDirection == "asc") {
+        this.sortDirection = "desc";
+      } else {
+        this.sortDirection = "asc";
+      }
+      this.getPage();
+    }
 
     setPage(e: number) {
       this.page = (e - 1);

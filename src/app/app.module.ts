@@ -29,6 +29,22 @@ import { SucursalBackButtonUnroutedComponent } from './component/application/suc
 import { SucursalRemoveAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-remove-admin-routed/sucursal-remove-admin-routed.component';
 import { SucursalNewAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-new-admin-routed/sucursal-new-admin-routed.component';
 import { SucursalEditAdminRoutedComponent } from './component/application/sucursal/routed/admin/sucursal-edit-admin-routed/sucursal-edit-admin-routed.component';
+import { CocheBacButtonUnroutedComponent } from './component/application/coche/unrouted/admin/coche-bacButton-unrouted/coche-bacButton-unrouted.component';
+import { CocheDetailAdminUnroutedComponent } from './component/application/coche/unrouted/admin/coche-detail-admin-unrouted/coche-detail-admin-unrouted.component';
+import { CochePlistAdminRoutedComponent } from './component/application/coche/routed/admin/coche-plist-admin-routed/coche-plist-admin-routed.component';
+import { CocheEditAdminRoutedComponent } from './component/application/coche/routed/admin/coche-edit-admin-routed/coche-edit-admin-routed.component';
+import { CocheNewAdminRoutedComponent } from './component/application/coche/routed/admin/coche-new-admin-routed/coche-new-admin-routed.component';
+import { CocheRemoveAdminRoutedComponent } from './component/application/coche/routed/admin/coche-remove-admin-routed/coche-remove-admin-routed.component';
+import { CocheViewAdminRoutedComponent } from './component/application/coche/routed/admin/coche-view-admin-routed/coche-view-admin-routed.component';
+import { UsuarioFinderAdminUnroutedComponent } from './component/application/usuario/unrouted/usuario-finder-admin-unrouted/usuario-finder-admin-unrouted.component';
+import { CompraBacButtonAdminUnroutedComponent } from './component/application/compra/unrouted/compra-bacButton-admin-unrouted/compra-bacButton-admin-unrouted.component';
+import { CompraDetailAdminUnroutedComponent } from './component/application/compra/unrouted/compra-detail-admin-unrouted/compra-detail-admin-unrouted.component';
+import { CompraPlistAdminRoutedComponent } from './component/application/compra/routed/compra-plist-admin-routed/compra-plist-admin-routed.component';
+import { CompraViewAdminRoutedComponent } from './component/application/compra/routed/compra-view-admin-routed/compra-view-admin-routed.component';
+import { CompraRemoveAdminRoutedComponent } from './component/application/compra/routed/compra-remove-admin-routed/compra-remove-admin-routed.component';
+import { CompraNewAdminRoutedComponent } from './component/application/compra/routed/compra-new-admin-routed/compra-new-admin-routed.component';
+import { CocheFinderAdminUnroutedComponent } from './component/application/coche/unrouted/admin/coche-finder-admin-unrouted/coche-finder-admin-unrouted.component';
+import { CompraEditAdminRoutedComponent } from './component/application/compra/routed/compra-edit-admin-routed/compra-edit-admin-routed.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +52,7 @@ import { SucursalEditAdminRoutedComponent } from './component/application/sucurs
     HomeComponent,
     MenuComponent,
     UsuarioPlistAdminRouterComponent,
+    UsuarioFinderAdminUnroutedComponent,
     UsuarioViewAdminRoutedComponent,
     UsuarioDetailAdminUnroutedComponent,
     UsuarioRemoveAdminRoutedComponent,
@@ -50,6 +67,21 @@ import { SucursalEditAdminRoutedComponent } from './component/application/sucurs
     SucursalRemoveAdminRoutedComponent,
     SucursalNewAdminRoutedComponent,
     SucursalEditAdminRoutedComponent,
+    CocheBacButtonUnroutedComponent,
+    CocheDetailAdminUnroutedComponent,
+    CochePlistAdminRoutedComponent,
+    CocheEditAdminRoutedComponent,
+    CocheNewAdminRoutedComponent,
+    CocheRemoveAdminRoutedComponent,
+    CocheViewAdminRoutedComponent,
+    CocheFinderAdminUnroutedComponent,
+    CompraBacButtonAdminUnroutedComponent,
+    CompraDetailAdminUnroutedComponent,
+    CompraPlistAdminRoutedComponent,
+    CompraViewAdminRoutedComponent,
+    CompraRemoveAdminRoutedComponent,
+    CompraNewAdminRoutedComponent,
+    CompraEditAdminRoutedComponent,
     PaginationComponent,
     SearchUnroutedComponent,
     DropdownRegisterPageComponent,

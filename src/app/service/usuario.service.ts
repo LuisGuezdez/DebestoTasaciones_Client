@@ -25,7 +25,10 @@ import { IUsuario, IUsuario2Send } from "../model/usuario-interface";
         .set("size", size);
       if (id_usertype != 0) {
         params = params.set("usertype", id_usertype);
-      }
+      }/* 
+      if (id_usertype = 2) {
+        .setFilter("filter", "cliente")
+      } */
       if (strSortField != "") { //&sort=codigo,[asc|desc]
         if (strOrderDirection != "") {
           params = params.set("sort", strSortField + "," + strOrderDirection);

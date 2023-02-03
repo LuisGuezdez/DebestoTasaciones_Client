@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { SucursalAdminBackButtonComponent } from './sucursal-admin-backButton.component';
+import { CompraBacButtonAdminUnroutedComponent } from './compra-bacButton-admin-unrouted.component';
 
-describe('SucursalAdminBackButtonComponent', () => {
-  let component: SucursalAdminBackButtonComponent;
-  let fixture: ComponentFixture<SucursalAdminBackButtonComponent>;
+describe('CompraBacButtonAdminUnroutedComponent', () => {
+  let component: CompraBacButtonAdminUnroutedComponent;
+  let fixture: ComponentFixture<CompraBacButtonAdminUnroutedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SucursalAdminBackButtonComponent ]
+      declarations: [ CompraBacButtonAdminUnroutedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SucursalAdminBackButtonComponent);
+    fixture = TestBed.createComponent(CompraBacButtonAdminUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
