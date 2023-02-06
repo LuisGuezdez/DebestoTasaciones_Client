@@ -15,7 +15,7 @@
       </div>
       <h5 class="text-muted text-end">Total de registros en la consulta {{responseFromServer.totalElements}}</h5>
       <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
-      <table class="table table-bordered table-striped">
+      <table class="table table-bordered table-striped text-center">
         <thead>
           <tr>
             <th (click)="setOrder('id')">ID
@@ -54,7 +54,7 @@
             <td>{{coche.anyo}}</td>
             <td>{{coche.kms}}</td>
             <td>{{coche.combustible}}</td>
-            <td>{{coche.usuario.id}}</td>
+            <td><button (click)="openModalFindUsuario(coche.usuario.id)" class="btn btn-primary mx-3">{{coche.usuario.id}}<fa-icon [icon]="faEye" class="mx-1"></fa-icon></button></td>
             <td>
               <div class="btn-group" role="group" aria-label="Herramientas">
                 <button class="btn btn-sm btn-primary" [routerLink]="['/admin/coche/view',coche.id]">
@@ -71,6 +71,26 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="showUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="exampleModalLabel">Usuario {{id}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <app-usuario-detail-admin-unrouted [id]="id"></app-usuario-detail-admin-unrouted>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
     </div>
   </div>
 </div>

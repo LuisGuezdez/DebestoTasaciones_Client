@@ -123,9 +123,9 @@ export class CocheEditAdminRoutedComponent implements OnInit {
     })
   }
 
-  updateCombDescription(combustible: string) {
+  /* updateCombDescription(combustible: string) {
     let comb = document.getElementById(combustible);
     comb.insertAdjacentElement(checked);
-  }
+  } */
 
 }

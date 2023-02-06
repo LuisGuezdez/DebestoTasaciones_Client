@@ -45,6 +45,11 @@ import { CompraRemoveAdminRoutedComponent } from './component/application/compra
 import { CompraNewAdminRoutedComponent } from './component/application/compra/routed/compra-new-admin-routed/compra-new-admin-routed.component';
 import { CocheFinderAdminUnroutedComponent } from './component/application/coche/unrouted/admin/coche-finder-admin-unrouted/coche-finder-admin-unrouted.component';
 import { CompraEditAdminRoutedComponent } from './component/application/compra/routed/compra-edit-admin-routed/compra-edit-admin-routed.component';
+import { TasacionBackButtonUnroutedComponent } from './component/application/tasacion/unrouted/admin/tasacion-backButton-unrouted/tasacion-backButton-unrouted.component';
+import { TasacionDetailAdminUnroutedComponent } from './component/application/tasacion/unrouted/admin/tasacion-detail-admin-unrouted/tasacion-detail-admin-unrouted.component';
+import { TasacionPlistAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-plist-admin-routed/tasacion-plist-admin-routed.component';
+import { TasacionViewAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-view-admin-routed/tasacion-view-admin-routed.component';
+import { TasacionRemoveAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-remove-admin-routed/tasacion-remove-admin-routed.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +87,11 @@ import { CompraEditAdminRoutedComponent } from './component/application/compra/r
     CompraRemoveAdminRoutedComponent,
     CompraNewAdminRoutedComponent,
     CompraEditAdminRoutedComponent,
+    TasacionBackButtonUnroutedComponent,
+    TasacionDetailAdminUnroutedComponent,
+    TasacionPlistAdminRoutedComponent,
+    TasacionViewAdminRoutedComponent,
+    TasacionRemoveAdminRoutedComponent,
     PaginationComponent,
     SearchUnroutedComponent,
     DropdownRegisterPageComponent,

@@ -22,6 +22,9 @@ import { CompraViewAdminRoutedComponent } from './component/application/compra/r
 import { CompraRemoveAdminRoutedComponent } from './component/application/compra/routed/compra-remove-admin-routed/compra-remove-admin-routed.component';
 import { CompraNewAdminRoutedComponent } from './component/application/compra/routed/compra-new-admin-routed/compra-new-admin-routed.component';
 import { CompraEditAdminRoutedComponent } from './component/application/compra/routed/compra-edit-admin-routed/compra-edit-admin-routed.component';
+import { TasacionPlistAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-plist-admin-routed/tasacion-plist-admin-routed.component';
+import { TasacionViewAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-view-admin-routed/tasacion-view-admin-routed.component';
+import { TasacionRemoveAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-remove-admin-routed/tasacion-remove-admin-routed.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -46,6 +49,9 @@ const routes: Routes = [
   { path: 'admin/compra/remove/:id', component: CompraRemoveAdminRoutedComponent},
   { path: 'admin/compra/new', component: CompraNewAdminRoutedComponent},
   { path: 'admin/compra/edit/:id', component: CompraEditAdminRoutedComponent},
+  { path: 'admin/tasacion/plist', component: TasacionPlistAdminRoutedComponent},
+  { path: 'admin/tasacion/view/:id', component: TasacionViewAdminRoutedComponent},
+  { path: 'admin/tasacion/remove/:id', component: TasacionRemoveAdminRoutedComponent},
 
 ];
 

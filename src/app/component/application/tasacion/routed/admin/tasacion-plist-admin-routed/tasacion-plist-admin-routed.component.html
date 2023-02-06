@@ -1,0 +1,69 @@
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Lista de Tasaciones</h1>
+      <div class="col-md text-end d-flex justify-content-center align-items-center mb-3">
+<!--         <a [routerLink]="['/admin/tasacion/new']" class="btn btn-primary mx-3">Realizar Tasacion</a>
+ -->        <app-search-unrouted [placeHolder]="'Buscar tasacion'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.size" (eeRpp)="this.setRpp($event)"></app-dropdown-register-page>
+
+      </div>
+      <div class="col-md text-center">
+        <app-pagination-unrouted [nPage]="responseFromServer.number + 1" [nTotalPages]="responseFromServer.totalPages"
+          (eePage)="setPage($event)"></app-pagination-unrouted>
+      </div>
+      <h5 class="text-muted text-end">Total de registros en la consulta {{responseFromServer.totalElements}}</h5>
+      <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th (click)="setOrder('id')">ID
+              <fa-icon *ngIf="sortField=='id'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+              <fa-icon *ngIf="sortField=='id'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+            </th>
+            <th (click)="setOrder('reserva')">Reserva
+              <fa-icon *ngIf="sortField=='reserva'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+              <fa-icon *ngIf="sortField=='reserva'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+            </th>
+            <th (click)="setOrder('valorcoche')">Valor
+              <fa-icon *ngIf="sortField=='valorcoche'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
+              <fa-icon *ngIf="sortField=='valorcoche'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+            </th>
+            <th>ID Vendedor</th>
+            <th>ID Coche</th>
+            <th>ID Sucursal</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tasacion of this.responseFromServer.content">
+            <td>{{tasacion.id}}</td>
+            <td>{{tasacion.reserva}}</td>
+            <td *ngIf="tasacion.valorcoche!=null">{{tasacion.valorcoche}}</td>
+            <td *ngIf="tasacion.valorcoche==null">Sin Tasar</td>
+            <td *ngIf="tasacion.usuario!=null">{{tasacion.usuario.id}}, {{tasacion.usuario.nombre}} {{tasacion.usuario.apellidos}}</td>
+            <td *ngIf="tasacion.usuario==null"></td>
+            <td>{{tasacion.coche.id}}, {{tasacion.coche.marca}} {{tasacion.coche.modelo}}</td>
+            <td>{{tasacion.sucursal.id}}, {{tasacion.sucursal.nombre}}</td>
+            <td>
+              <!-- <div class="btn-group" role="group" aria-label="Herramientas">
+                <button class="btn btn-sm btn-primary" [routerLink]="['/admin/tasacion/view',tasacion.id]">
+                  <fa-icon [icon]="faEye"></fa-icon>
+                </button>
+                <button class="btn btn-sm btn-warning" [routerLink]="['/admin/tasacion/edit',tasacion.id]">
+                  <fa-icon [icon]="faUserPen"></fa-icon>
+                </button>
+                <button class="btn btn-sm btn-danger" [routerLink]="['/admin','tasacion','remove',tasacion.id]">
+                  <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+              </div> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,30 @@
+<table class="table table-bordered table-striped table-sm">
+  <tbody>
+      <tr>
+          <th>Id</th>
+          <td>{{oTasacion.id}}</td>
+      </tr>
+      <tr>
+          <td>Reserva</td>
+          <td>{{oTasacion.reserva}}</td>
+      </tr>
+      <tr>
+          <td>Valor</td>
+          <td *ngIf="oTasacion.valorcoche!=null">{{oTasacion.valorcoche}}</td>
+          <td *ngIf="oTasacion.valorcoche==null">Sin Tasar</td>
+      </tr>
+      <tr>
+          <td>ID Coche</td>
+          <td>{{oTasacion.coche.id}}, {{oTasacion.coche.marca}} {{oTasacion.coche.modelo}}</td>
+      </tr>
+      <tr>
+          <td>ID Sucursal</td>
+          <td>{{oTasacion.sucursal.id}}, {{oTasacion.sucursal.nombre}}</td>
+      </tr>
+      <tr>
+        <td>ID Usuario</td>
+        <td>{{oTasacion.usuario.id}}, {{oTasacion.usuario.nombre}} {{oTasacion.usuario.apellidos}}</td>
+    </tr>
+  </tbody>
+</table>
+

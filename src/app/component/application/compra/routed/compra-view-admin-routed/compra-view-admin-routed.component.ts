@@ -10,7 +10,7 @@ import { ICompra } from 'src/app/model/compra-interface';
 export class CompraViewAdminRoutedComponent implements OnInit {
 
   id: number = 0;
-  oCoche: ICompra;
+  oCompra: ICompra;
 
   constructor(
     private oActivatedRoute: ActivatedRoute

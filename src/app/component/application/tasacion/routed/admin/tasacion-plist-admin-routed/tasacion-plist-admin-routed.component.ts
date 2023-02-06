@@ -1,23 +1,21 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ICoche } from 'src/app/model/coche-interface';
 import { IPage } from 'src/app/model/generic-types-interface';
-import { CocheService } from 'src/app/service/coche.service';
+import { ITasacion } from 'src/app/model/tasacion-interface';
+import { TasacionService } from 'src/app/service/tasacion.service';
 import { faEye, faUserPen, faTrash, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-
-declare let bootstrap: any;
 
 
 @Component({
-  selector: 'app-coche-plist-admin-routed',
-  templateUrl: './coche-plist-admin-routed.component.html',
-  styleUrls: ['./coche-plist-admin-routed.component.css']
+  selector: 'app-tasacion-plist-admin-routed',
+  templateUrl: './tasacion-plist-admin-routed.component.html',
+  styleUrls: ['./tasacion-plist-admin-routed.component.css']
 })
-export class CochePlistAdminRoutedComponent implements OnInit {
+export class TasacionPlistAdminRoutedComponent implements OnInit {
 
   @Output() closeEvent = new EventEmitter<number>();
 
-  responseFromServer!: IPage<ICoche>;
+  responseFromServer!: IPage<ITasacion>;
   //
   strTermFilter: string = "";
   numberOfElements: number = 5;
@@ -31,13 +29,9 @@ export class CochePlistAdminRoutedComponent implements OnInit {
   faTrash = faTrash;
   faArrowUp = faArrowUp;
   faArrowDown = faArrowDown;
-  myModal: any;
-  modalTitle: string = "";
-  id: number = 0;
-
 
   constructor(
-    private oCocheService: CocheService
+    private oTasacionService:TasacionService
   ) { }
 
   ngOnInit(): void {
@@ -45,14 +39,14 @@ export class CochePlistAdminRoutedComponent implements OnInit {
   }
 
   getPage() {
-    this.oCocheService.getCochesPlist(this.page, this.numberOfElements,
-      this.strTermFilter, this.sortField, this.sortDirection)
-      .subscribe({
-        next: (resp: IPage<ICoche>) => {
+    this.oTasacionService.getTasacionesPlist(this.page, this.numberOfElements,
+      this.strTermFilter, this.sortField, this.sortDirection).subscribe({
+        next: (resp: IPage<ITasacion>) => {
           this.responseFromServer = resp;
           if (this.page > resp.totalPages - 1) {
             this.page = resp.totalPages - 1;
             this.getPage();
+            console.log(this.responseFromServer)
           }
         },
         error: (err: HttpErrorResponse) => {
@@ -60,7 +54,6 @@ export class CochePlistAdminRoutedComponent implements OnInit {
         }
       })
     }
-    
 
     setPage(e: number) {
       this.page = (e - 1);
@@ -85,16 +78,5 @@ export class CochePlistAdminRoutedComponent implements OnInit {
       }
       this.getPage();
     }
-    ide: number;
-
-    openModalFindUsuario(ide):void {
-      console.log(ide)
-      this.id = ide;
-      
-      this.myModal = new bootstrap.Modal(document.getElementById("showUsuario"), { //pasar el myModal como parametro
-        keyboard: false
-      })
-      this.myModal.show()
-      }
 
 }

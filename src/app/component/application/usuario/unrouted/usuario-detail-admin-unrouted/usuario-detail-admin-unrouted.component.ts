@@ -9,8 +9,8 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class UsuarioDetailAdminUnroutedComponent implements OnInit {
 
-  @Input() id!: number;
-  oUsuario!: IUsuario;
+  @Input() id: number;
+  oUsuario: IUsuario;
 
   constructor(
     private oUsuarioService: UsuarioService
