@@ -28,6 +28,7 @@ export class CocheEditAdminRoutedComponent implements OnInit {
   modalContent: string = "";
   // foreigns
   usuarioDescription: string = "";
+  combDescription: string = "";
 
   constructor(
     private oRouter: Router,
@@ -40,15 +41,26 @@ export class CocheEditAdminRoutedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.oForm = <FormGroup>this.oFormBuilder.group({
-      id: [""],
-      marca: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      modelo: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      anyo: ["", [Validators.required, Validators.pattern(/^(19[0-9][0-9]|20[0-2][0-3])$/)]],
-      kms: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
-      id_usuario: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
-      combustible: [""]
-    }); 
+    this.getOne();
+    this.updateUsuarioDescription(this.id);
+  }
+
+  getOne() {
+    this.oCocheService.getOne(this.id).subscribe({
+      next: (data: ICoche) => {
+        this.oCoche = data;
+        console.log(data);
+        this.oForm = <FormGroup>this.oFormBuilder.group({
+          id: [data.id, [Validators.required]],
+          marca: [data.marca, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+          id_usuario: [data.usuario.id, [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
+          modelo: [data.modelo, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+          anyo: [data.anyo, [Validators.required, Validators.pattern(/^(19[0-9][0-9]|20[0-2][0-3])$/)]],
+          kms: [data.kms, [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
+          combustible: [data.combustible]
+        });
+      }
+    })
   }
 
   onSubmit() {
@@ -109,6 +121,11 @@ export class CocheEditAdminRoutedComponent implements OnInit {
         this.oForm.controls['id_usuario'].setErrors({'incorrect': true});
       }
     })
+  }
+
+  updateCombDescription(combustible: string) {
+    let comb = document.getElementById(combustible);
+    comb.insertAdjacentElement(checked);
   }
 
 }

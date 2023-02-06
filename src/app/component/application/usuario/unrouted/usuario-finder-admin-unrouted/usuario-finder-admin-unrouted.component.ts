@@ -4,6 +4,7 @@ import { IPage } from 'src/app/model/generic-types-interface';
 import { IUsuario } from 'src/app/model/usuario-interface';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { faEye, faUserPen, faTrash, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -32,16 +33,24 @@ export class UsuarioFinderAdminUnroutedComponent implements OnInit {
   faArrowDown = faArrowDown;
 
   constructor(
-    private oUsuarioService: UsuarioService
+    private oUsuarioService: UsuarioService,
+    private oRouter: Router
   ) { }
 
   ngOnInit(): void {
+    console.log(this.oRouter.url);
     this.getPage();
   }
 
   getPage() {
+    // if (this.oRouter.url.indexOf("coche")) {
+    //   this.id_usertypeFilter = 2;
+    // }
+    // if (this.oRouter.url.indexOf("compra")) {
+    //   this.id_usertypeFilter = 1;
+    // }
     this.oUsuarioService.getUsuariosPlist(this.page, this.numberOfElements,
-      this.strTermFilter, this.id_usertypeFilter = 2, this.sortField, this.sortDirection)
+      this.strTermFilter, this.id_usertypeFilter, this.sortField, this.sortDirection)
       .subscribe({
         next: (resp: IPage<IUsuario>) => {
           this.responseFromServer = resp;

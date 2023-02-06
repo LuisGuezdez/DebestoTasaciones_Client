@@ -49,6 +49,7 @@ export class CocheNewAdminRoutedComponent implements OnInit {
       id_usuario: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
       combustible: [""]
     }); 
+    console.log(this.oRouter.url);
   }
 
   onSubmit() {
@@ -102,7 +103,7 @@ export class CocheNewAdminRoutedComponent implements OnInit {
   updateUsuarioDescription(id_usuario: number) {
     this.oUsuarioService.getOne(id_usuario).subscribe({
       next: (data: IUsuario) => {      
-        this.usuarioDescription = data.nombre;        
+        this.usuarioDescription = data.nombre + data.apellidos;        
       },
       error: (error: any) => {
         this.usuarioDescription = "Usuario no encontrado";        
