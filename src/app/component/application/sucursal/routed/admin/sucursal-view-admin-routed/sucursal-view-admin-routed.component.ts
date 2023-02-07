@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ISucursal } from 'src/app/model/sucursal-interface';
+import { Location} from '@angular/common';
 
 @Component({
   selector: 'app-sucursal-view-admin-routed',
@@ -13,7 +14,8 @@ export class SucursalViewAdminRoutedComponent implements OnInit {
   oUsuario!: ISucursal;
 
   constructor(
-    private oActivatedRoute: ActivatedRoute
+    private oActivatedRoute: ActivatedRoute,
+    public oLocation: Location
   ) {
     this.id = oActivatedRoute.snapshot.params['id'];
   }

@@ -36,7 +36,7 @@
             </th>
             <th (click)="setOrder('kms')">Kilometros
               <fa-icon *ngIf="sortField=='kms'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
-              <fa-icon *ngIf="sortField=='kma'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
+              <fa-icon *ngIf="sortField=='kms'&&sortDirection=='desc'" [icon]="faArrowDown"></fa-icon>
             </th>
             <th (click)="setOrder('combustible')">Combustible
               <fa-icon *ngIf="sortField=='combustible'&&sortDirection=='asc'" [icon]="faArrowUp"></fa-icon>
@@ -54,7 +54,7 @@
             <td>{{coche.anyo}}</td>
             <td>{{coche.kms}}</td>
             <td>{{coche.combustible}}</td>
-            <td><button (click)="openModalFindUsuario(coche.usuario.id)" class="btn btn-primary mx-3">{{coche.usuario.id}}<fa-icon [icon]="faEye" class="mx-1"></fa-icon></button></td>
+            <td>{{coche.usuario.id}}, {{coche.usuario.nombre}} {{coche.usuario.apellidos}}<button class="btn btn-sm btn-primary ms-3" (click)="openModalFindUsuario(coche.usuario.id)"><fa-icon [icon]="faEye" class="mx-1"></fa-icon></button></td>
             <td>
               <div class="btn-group" role="group" aria-label="Herramientas">
                 <button class="btn btn-sm btn-primary" [routerLink]="['/admin/coche/view',coche.id]">

@@ -5,6 +5,8 @@ import { ICoche, ICoche2Form, ICoche2Send } from 'src/app/model/coche-interface'
 import { IUsuario } from 'src/app/model/usuario-interface';
 import { CocheService } from 'src/app/service/coche.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 
 declare let bootstrap: any;
 
@@ -29,20 +31,22 @@ export class CocheEditAdminRoutedComponent implements OnInit {
   // foreigns
   usuarioDescription: string = "";
   combDescription: string = "";
+  error: HttpErrorResponse;
 
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     private oCocheService: CocheService,
     private oFormBuilder: FormBuilder,
-    private oUsuarioService: UsuarioService
+    private oUsuarioService: UsuarioService,
+    public oLocation: Location
   ) {
     this.id = oActivatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
     this.getOne();
-    this.updateUsuarioDescription(this.id);
+    
   }
 
   getOne() {
@@ -55,10 +59,11 @@ export class CocheEditAdminRoutedComponent implements OnInit {
           marca: [data.marca, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
           id_usuario: [data.usuario.id, [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
           modelo: [data.modelo, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-          anyo: [data.anyo, [Validators.required, Validators.pattern(/^(19[0-9][0-9]|20[0-2][0-3])$/)]],
+          anyo: [data.anyo, [Validators.required, Validators.pattern(/^(19[0-9][0-9]|20[0-1][0-9]|20[0-2][0-3])$/)]],
           kms: [data.kms, [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
           combustible: [data.combustible]
         });
+        this.updateUsuarioDescription(this.oCoche.usuario.id);
       }
     })
   }
@@ -75,12 +80,15 @@ export class CocheEditAdminRoutedComponent implements OnInit {
       usuario: { id: this.oForm.value.id_usuario}
     }
     if (this.oForm.valid) {
-      this.oCocheService.newOne(this.oCoche2Send).subscribe({
+      this.oCocheService.updateOne(this.oCoche2Send).subscribe({
         next: (data: number) => {
           //open bootstrap modal here
           this.modalTitle = "DEBESTO";
-          this.modalContent = "Usuario " + data + " created";
+          this.modalContent = "Usuario " + data + " editado";
           this.showModal(data);
+        },
+        error: (err:HttpErrorResponse)=>{
+          console.log(err);
         }
       })
     }

@@ -7,6 +7,9 @@ import { IUsuario, IUsuario2Form, IUsuario2Send } from 'src/app/model/usuario-in
 import { SucursalService } from 'src/app/service/sucursal.service';
 import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { Location} from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 declare let bootstrap: any;
 
@@ -27,7 +30,7 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
   myModal: any;
   modalTitle: string = "";
   modalContent: string = "";
-
+  error: HttpErrorResponse;
   sucursalDescription: string = "";
   usertypeDescription: string = "";
 
@@ -37,17 +40,16 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
     private oUsuarioService: UsuarioService,
     private oFormBuilder: FormBuilder,
     private oSucursalService: SucursalService,
-    private oTipousuarioService: TipousuarioService
+    private oTipousuarioService: TipousuarioService,
+    public oLocation: Location
   ) {
     this.id = oActivatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
     this.getOne();
-    this.updateTipousuarioDescription(this.id);
-    this.updateSucursalDescription(this.id);
   }
-
+  
   getOne() {
     this.oUsuarioService.getOne(this.id).subscribe({
       next: (data: IUsuario) => {
@@ -62,6 +64,8 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
           id_tipousuario: [data.tipousuario.id, [Validators.required, Validators.pattern(/^\d{1,6}$/)]],
           id_sucursal: [data.sucursal.id, [Validators.required, Validators.pattern(/^\d{1,6}$/)]]
         });
+      this.updateTipousuarioDescription(this.oUsuario.tipousuario.id);
+      this.updateSucursalDescription(this.oUsuario.sucursal.id);
       }
     })
   }

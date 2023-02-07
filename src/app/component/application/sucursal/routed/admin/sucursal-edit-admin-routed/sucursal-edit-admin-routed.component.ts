@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ISucursal, ISucursal2Form, ISucursal2Send } from 'src/app/model/sucursal-interface';
 import { SucursalService } from 'src/app/service/sucursal.service';
+import { Location} from '@angular/common';
 
 declare let bootstrap: any;
 
@@ -28,7 +29,8 @@ export class SucursalEditAdminRoutedComponent implements OnInit {
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     private oSucursalService: SucursalService,
-    private oFormBuilder: FormBuilder
+    private oFormBuilder: FormBuilder,
+    public oLocation: Location
   ) {
     this.id = oActivatedRoute.snapshot.params['id'];
   }
@@ -56,18 +58,18 @@ export class SucursalEditAdminRoutedComponent implements OnInit {
   onSubmit() {
     console.log("onSubmit");
     this.oSucursal2Send = {
-      id: this.oForm.value.id!,
-      nombre: this.oForm.value.nombre!,
-      localidad: this.oForm.value.localidad!,
-      calle: this.oForm.value.calle!,
-      postal: this.oForm.value.postal!
+      id: this.oForm.value.id,
+      nombre: this.oForm.value.nombre,
+      localidad: this.oForm.value.localidad,
+      calle: this.oForm.value.calle,
+      postal: this.oForm.value.postal
     }
     if (this.oForm.valid) {
       this.oSucursalService.updateOne(this.oSucursal2Send).subscribe({
         next: (data: number) => {
           //open bootstrap modal here
           this.modalTitle = "DEBESTO";
-          this.modalContent = "Sucursal " + data + " created";
+          this.modalContent = "Sucursal " + data + " editada";
           this.showModal(data);
         }
       })

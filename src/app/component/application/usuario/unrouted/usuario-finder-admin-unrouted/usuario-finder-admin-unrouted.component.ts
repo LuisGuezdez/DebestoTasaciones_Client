@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IPage } from 'src/app/model/generic-types-interface';
 import { IUsuario } from 'src/app/model/usuario-interface';
 import { UsuarioService } from 'src/app/service/usuario.service';
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class UsuarioFinderAdminUnroutedComponent implements OnInit {
 
+  @Input() tipousuario:number;
   @Output() closeEvent = new EventEmitter<number>();
 
   responseFromServer!: IPage<IUsuario>;
@@ -50,7 +51,7 @@ export class UsuarioFinderAdminUnroutedComponent implements OnInit {
     //   this.id_usertypeFilter = 1;
     // }
     this.oUsuarioService.getUsuariosPlist(this.page, this.numberOfElements,
-      this.strTermFilter, this.id_usertypeFilter, this.sortField, this.sortDirection)
+      this.strTermFilter, this.tipousuario, this.sortField, this.sortDirection)
       .subscribe({
         next: (resp: IPage<IUsuario>) => {
           this.responseFromServer = resp;

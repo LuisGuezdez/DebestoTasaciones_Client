@@ -110,8 +110,8 @@
               <input type="radio" class="form-check-input" formControlName="combustible" id="Gas" name="optradio" value="Gas">
               <label class="form-check-label" for="Gas">Gas</label>
             </div>
+            <div class="mt-2 fw-bold">Actual: {{oCoche.combustible}}</div>
           </div>
-          <div id="combDescription"></div>
         </div>
 
         <div class="mb-3 row">
@@ -142,10 +142,11 @@
 
         
 
-        <button type="submit" class="btn btn-primary"
+        <button type="submit" class="btn btn-success"
           [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
         
         <app-coche-bacButton-unrouted class="container"></app-coche-bacButton-unrouted>
+        <button type="button" class="btn btn-primary" (click)="oLocation.back()">Atrás</button>
 
       </form>
 
@@ -181,7 +182,7 @@
       </div>
       <div class="modal-body">
 
-        <app-usuario-finder-admin-unrouted (closeEvent)="closeUsuarioModal($event)"></app-usuario-finder-admin-unrouted>
+        <app-usuario-finder-admin-unrouted (closeEvent)="closeUsuarioModal($event)" [tipousuario]="2"></app-usuario-finder-admin-unrouted>
 
       </div>
       <div class="modal-footer">

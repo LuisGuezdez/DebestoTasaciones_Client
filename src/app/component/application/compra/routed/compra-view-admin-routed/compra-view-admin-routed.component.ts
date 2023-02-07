@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICompra } from 'src/app/model/compra-interface';
+import { Location} from '@angular/common';
 
 @Component({
   selector: 'app-compra-view-admin-routed',
@@ -13,7 +14,8 @@ export class CompraViewAdminRoutedComponent implements OnInit {
   oCompra: ICompra;
 
   constructor(
-    private oActivatedRoute: ActivatedRoute
+    private oActivatedRoute: ActivatedRoute,
+    public oLocation: Location
   ) {
     this.id = oActivatedRoute.snapshot.params['id'];
   }

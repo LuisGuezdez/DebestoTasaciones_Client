@@ -2,7 +2,6 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col">
-      <h1 class="text-center mb-5">Realizar Compra</h1>
 
       <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
 
@@ -108,10 +107,11 @@
 
         
 
-        <button type="submit" class="btn btn-primary"
+        <button type="submit" class="btn btn-success"
           [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
         
         <app-compra-bacButton-admin-unrouted class="container"></app-compra-bacButton-admin-unrouted>
+        <button type="button" class="btn btn-primary" (click)="oLocation.back()">Atrás</button>
 
       </form>
 

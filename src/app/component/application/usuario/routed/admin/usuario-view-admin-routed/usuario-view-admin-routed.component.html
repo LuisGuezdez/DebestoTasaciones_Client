@@ -5,6 +5,7 @@
       <app-usuario-detail-admin-unrouted [id]="id"></app-usuario-detail-admin-unrouted>
       <div class="d-flex justify-content-center">
         <app-usuario-backButton-unrouted></app-usuario-backButton-unrouted>
+        <button class="btn btn-warning" [routerLink]="['/admin/usuario/edit',id]">Editar</button>
       </div>
       <button class="btn btn-primary" (click)="oLocation.back()">Atrás</button>
     </div>

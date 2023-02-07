@@ -5,7 +5,9 @@
       <app-coche-detail-admin-unrouted [id]="id"></app-coche-detail-admin-unrouted>
       <div class="d-flex justify-content-center">
         <app-coche-bacButton-unrouted></app-coche-bacButton-unrouted>
+        <button class="btn btn-warning" [routerLink]="['/admin/coche/edit',id]">Editar</button>
       </div>
+      <button class="btn btn-primary" (click)="oLocation.back()">Atrás</button>
     </div>
   </div>
 </div>

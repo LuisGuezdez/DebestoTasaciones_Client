@@ -5,7 +5,9 @@
       <app-sucursal-detail-admin-unrouted [id]="id"></app-sucursal-detail-admin-unrouted>
       <div class="d-flex justify-content-center">
         <app-sucursal-backButton-unrouted></app-sucursal-backButton-unrouted>
+        <button class="btn btn-warning" [routerLink]="['/admin/sucursal/edit',id]">Editar</button>
       </div>
+      <button class="btn btn-primary" (click)="oLocation.back()">Atrás</button>
     </div>
   </div>
 </div>

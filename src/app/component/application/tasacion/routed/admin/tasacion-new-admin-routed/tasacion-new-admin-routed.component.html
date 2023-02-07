@@ -2,7 +2,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col">
-      <h1 class="text-center mb-5">Realizar Compra</h1>
+      <h1 class="text-center mb-5">Realizar Tasación</h1>
 
       <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
 
@@ -105,7 +105,7 @@
 
         
 
-        <button type="submit" class="btn btn-primary"
+        <button type="submit" class="btn btn-success"
           [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
         
         <app-coche-bacButton-unrouted class="container"></app-coche-bacButton-unrouted>

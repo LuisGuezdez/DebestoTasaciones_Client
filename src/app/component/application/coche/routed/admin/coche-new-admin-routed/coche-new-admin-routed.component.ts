@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -16,6 +17,7 @@ declare let bootstrap: any;
 export class CocheNewAdminRoutedComponent implements OnInit {
 
   //id: number = 0;
+  error: string= "";
   x!: number;
   oCoche!: ICoche;
   oCoche2Form!: ICoche2Form;
@@ -44,7 +46,7 @@ export class CocheNewAdminRoutedComponent implements OnInit {
       id: [""],
       marca: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       modelo: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      anyo: ["", [Validators.required, Validators.pattern(/^(19[0-9][0-9]|20[0-2][0-3])$/)]],
+      anyo: ["", [Validators.required, Validators.pattern(/^(19[0-9][0-9]|20[0-1][0-9]|20[0-2][0-3])$/)]],
       kms: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
       id_usuario: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
       combustible: [""]
@@ -70,6 +72,9 @@ export class CocheNewAdminRoutedComponent implements OnInit {
           this.modalTitle = "DEBESTO";
           this.modalContent = "Usuario " + data + " created";
           this.showModal(data);
+        },
+        error: (err:HttpErrorResponse)=>{
+          this.error = err.error.message;
         }
       })
     }
@@ -103,7 +108,7 @@ export class CocheNewAdminRoutedComponent implements OnInit {
   updateUsuarioDescription(id_usuario: number) {
     this.oUsuarioService.getOne(id_usuario).subscribe({
       next: (data: IUsuario) => {      
-        this.usuarioDescription = data.nombre + data.apellidos;        
+        this.usuarioDescription = data.nombre + " "+ data.apellidos;        
       },
       error: (error: any) => {
         this.usuarioDescription = "Usuario no encontrado";        

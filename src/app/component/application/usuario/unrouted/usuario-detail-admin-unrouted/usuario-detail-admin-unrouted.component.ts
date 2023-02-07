@@ -9,7 +9,16 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class UsuarioDetailAdminUnroutedComponent implements OnInit {
 
-  @Input() id: number;
+  _id: number = 0;
+  get id(): number {
+    return this._id
+  }
+  @Input() set id(id: number) {
+    this._id = id;
+    this.getOne();
+  };
+
+
   oUsuario: IUsuario;
 
   constructor(
@@ -21,16 +30,18 @@ export class UsuarioDetailAdminUnroutedComponent implements OnInit {
   }
 
   getOne() {
-    this.oUsuarioService.getOne(this.id).subscribe({
-      next: (data: IUsuario) => {
-        this.oUsuario = data;
-        let coches = document.getElementById("coches");
-        if (this.oUsuario.tipousuario.id == 2) {
-          coches!.innerHTML = "<td>Coches</td><td>" + this.oUsuario.coches + "</td>"
+    if (this._id > 0) {
+      this.oUsuarioService.getOne(this._id).subscribe({
+        next: (data: IUsuario) => {
+          this.oUsuario = data;
+          let coches = document.getElementById("coches");
+          if (this.oUsuario.tipousuario.id == 2) {
+            coches!.innerHTML = "<td>Coches</td><td>" + this.oUsuario.coches + "</td>"
+          }
+          console.log(data);
         }
-        console.log(data);
-      }
-    })
+      })
+    }
   }
 
 }

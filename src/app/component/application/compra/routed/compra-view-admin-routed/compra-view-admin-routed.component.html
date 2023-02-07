@@ -5,7 +5,9 @@
       <app-compra-detail-admin-unrouted [id]="id"></app-compra-detail-admin-unrouted>
       <div class="d-flex justify-content-center">
         <app-compra-bacButton-admin-unrouted></app-compra-bacButton-admin-unrouted>
+        <button class="btn btn-warning" [routerLink]="['/admin/compra/edit',id]">Editar</button>
       </div>
+      <button class="btn btn-primary" (click)="oLocation.back()">Atrás</button>
     </div>
   </div>
 </div>

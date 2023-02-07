@@ -60,14 +60,14 @@
         <div class="mb-3 row">
           <label for="inputAnyo" class="col-sm-2 col-form-label">Año</label>
           <div class="col-sm-4 has-validation">
-            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.anyo.dirty && !oForm.controls.anyo.errors?.['required'] &&
+            <input type="text" placeholder="Entre 1900 y el año actual" class="form-control" [ngClass]="{'is-valid' : oForm.controls.anyo.dirty && !oForm.controls.anyo.errors?.['required'] &&
             oForm.controls.anyo.dirty && !oForm.controls.anyo.errors?.['pattern'],
               'is-invalid' :  oForm.controls.anyo.dirty &&  oForm.controls.anyo.errors?.['pattern'] ||
               oForm.controls.anyo.dirty &&  oForm.controls.anyo.errors?.['required']}" id="inputAnyo"
               formControlName="anyo">
             <div id="inputAnyoFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.anyo.dirty &&  oForm.controls.anyo.errors?.['pattern']">
-              El formato no es adecuado
+              El año debe estar entre 1900 y la fecha actual.
             </div>
             <div id="inputAnyoFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.anyo.dirty &&  oForm.controls.anyo.errors?.['required']">
@@ -141,7 +141,7 @@
 
         
 
-        <button type="submit" class="btn btn-primary"
+        <button type="submit" class="btn btn-success"
           [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
         
         <app-coche-bacButton-unrouted class="container"></app-coche-bacButton-unrouted>

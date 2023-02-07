@@ -9,6 +9,7 @@ import { CocheService } from 'src/app/service/coche.service';
 import { CompraService } from 'src/app/service/compra.service';
 import { SucursalService } from 'src/app/service/sucursal.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { Location } from '@angular/common';
 
 declare let bootstrap: any;
 
@@ -42,16 +43,15 @@ export class CompraEditAdminRoutedComponent implements OnInit {
     private oFormBuilder: FormBuilder,
     private oCocheService: CocheService,
     private oUsuarioService: UsuarioService,
-    private oSucursalService: SucursalService
+    private oSucursalService: SucursalService,
+    public oLocation: Location
   ) {
     this.id = oActivatedRoute.snapshot.params['id'];
   }
 
   ngOnInit() {
     this.getOne();
-    this.updateUsuarioDescription(this.id);
-    this.updateSucursalDescription(this.id);
-    this.updateCocheDescription(this.id);
+
   }
 
   getOne() {
@@ -66,6 +66,9 @@ export class CompraEditAdminRoutedComponent implements OnInit {
           id_coche: [data.coche.id, [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
           id_sucursal: [data.sucursal.id, [Validators.required, Validators.pattern(/^\d{1,7}$/)]]
         });
+        this.updateUsuarioDescription(this.oCompra.usuario.id);
+        this.updateSucursalDescription(this.oCompra.sucursal.id);
+        this.updateCocheDescription(this.oCompra.coche.id);
       }
     })
   }
@@ -75,9 +78,9 @@ export class CompraEditAdminRoutedComponent implements OnInit {
     this.oCompra2Send = {
       id: this.oForm.value.id!,
       precio: this.oForm.value.precio!,
-      usuario: { id: this.oForm.value.id_usuario},
-      coche: { id: this.oForm.value.id_coche},
-      sucursal: { id: this.oForm.value.id_sucursal}
+      usuario: { id: this.oForm.value.id_usuario },
+      coche: { id: this.oForm.value.id_coche },
+      sucursal: { id: this.oForm.value.id_sucursal }
 
     }
     if (this.oForm.valid) {
@@ -85,14 +88,14 @@ export class CompraEditAdminRoutedComponent implements OnInit {
         next: (data: number) => {
           //open bootstrap modal here
           this.modalTitle = "DEBESTO";
-          this.modalContent = "Compra " + data + " created";
+          this.modalContent = "Compra " + data + " editada";
           this.showModal(data);
         }
       })
     }
   }
 
-  showModal = (id:number) => {
+  showModal = (id: number) => {
     this.myModal = new bootstrap.Modal(document.getElementById(this.mimodal), { //pasar el myModal como parametro
       keyboard: false
     })
@@ -119,12 +122,12 @@ export class CompraEditAdminRoutedComponent implements OnInit {
 
   updateUsuarioDescription(id_usuario: number) {
     this.oUsuarioService.getOne(id_usuario).subscribe({
-      next: (data: IUsuario) => {      
-        this.usuarioDescription = data.nombre;        
+      next: (data: IUsuario) => {
+        this.usuarioDescription = data.nombre;
       },
       error: (error: any) => {
-        this.usuarioDescription = "Usuario no encontrado";        
-        this.oForm.controls['id_usuario'].setErrors({'incorrect': true});
+        this.usuarioDescription = "Usuario no encontrado";
+        this.oForm.controls['id_usuario'].setErrors({ 'incorrect': true });
       }
     })
   }
@@ -144,12 +147,12 @@ export class CompraEditAdminRoutedComponent implements OnInit {
 
   updateCocheDescription(id_coche: number) {
     this.oCocheService.getOne(id_coche).subscribe({
-      next: (data: ICoche) => {      
-        this.cocheDescription = data.marca;        
+      next: (data: ICoche) => {
+        this.cocheDescription = data.marca;
       },
       error: (error: any) => {
-        this.cocheDescription = "Coche no encontrado";        
-        this.oForm.controls['id_coche'].setErrors({'incorrect': true});
+        this.cocheDescription = "Coche no encontrado";
+        this.oForm.controls['id_coche'].setErrors({ 'incorrect': true });
       }
     })
   }
@@ -169,12 +172,12 @@ export class CompraEditAdminRoutedComponent implements OnInit {
 
   updateSucursalDescription(id_sucursal: number) {
     this.oSucursalService.getOne(id_sucursal).subscribe({
-      next: (data: ISucursal) => {      
-        this.sucursalDescription = data.nombre;        
+      next: (data: ISucursal) => {
+        this.sucursalDescription = data.nombre;
       },
       error: (error: any) => {
-        this.sucursalDescription = "Sucursal no encontrada";        
-        this.oForm.controls['id_sucursal'].setErrors({'incorrect': true});
+        this.sucursalDescription = "Sucursal no encontrada";
+        this.oForm.controls['id_sucursal'].setErrors({ 'incorrect': true });
       }
     })
   }

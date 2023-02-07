@@ -4,7 +4,8 @@
       <h1 class="text-center mb-5">Lista de Usuarios</h1>
       <div class="col-md text-end d-flex justify-content-center align-items-center mb-3">
         <app-search-unrouted [placeHolder]="'Buscar Usuario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
-        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.size" (eeRpp)="this.setRpp($event)"></app-dropdown-register-page>
+        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.size" (eeRpp)="this.setRpp($event)">
+        </app-dropdown-register-page>
 
       </div>
       <div class="col-md text-center">
@@ -36,13 +37,20 @@
         </thead>
         <tbody>
           <tr *ngFor="let usuario of this.responseFromServer.content">
-            <td *ngIf="usuario.tipousuario.id != 2">{{usuario.id}}</td>
+            <!-- <td *ngIf="usuario.tipousuario.id != 2">{{usuario.id}}</td>
             <td *ngIf="usuario.tipousuario.id != 2">{{usuario.nombre}}</td>
             <td *ngIf="usuario.tipousuario.id != 2">{{usuario.apellidos}}</td>
             <td *ngIf="usuario.tipousuario.id != 2">{{usuario.username}}</td>
             <td *ngIf="usuario.tipousuario.id != 2">{{usuario.tipousuario.tipo}}</td>
             <td *ngIf="usuario.tipousuario.id != 2">{{usuario.sucursal.nombre}}</td>
-            <td *ngIf="usuario.tipousuario.id != 2">
+            <td *ngIf="usuario.tipousuario.id != 2"> -->
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.apellidos}}</td>
+            <td>{{usuario.username}}</td>
+            <td>{{usuario.tipousuario.tipo}}</td>
+            <td>{{usuario.sucursal.nombre}}</td>
+            <td>
               <div class="btn-group" role="group" aria-label="Herramientas">
                 <button class="btn btn-sm btn-primary" (click)="selectionUsuario(usuario.id)">
                   Seleccionar
@@ -55,4 +63,3 @@
     </div>
   </div>
 </div>
-

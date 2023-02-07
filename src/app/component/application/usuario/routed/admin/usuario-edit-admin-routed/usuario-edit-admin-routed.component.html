@@ -150,12 +150,15 @@
               *ngIf="oForm.controls.id_tipousuario.dirty &&  oForm.controls.id_tipousuario.errors?.['required']">
               El campo es obligatorio.
             </div>
+            
           </div>
         </div>
+        
 
-        <button type="submit" class="btn btn-primary"
+        <button type="submit" class="btn btn-success"
           [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
         <app-usuario-backButton-unrouted></app-usuario-backButton-unrouted>
+        <button type="button" id="atras" class="btn btn-primary" (click)="oLocation.back()">Atrás</button>
       </form>
 
     </div>
