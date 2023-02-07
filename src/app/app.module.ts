@@ -50,6 +50,7 @@ import { TasacionDetailAdminUnroutedComponent } from './component/application/ta
 import { TasacionPlistAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-plist-admin-routed/tasacion-plist-admin-routed.component';
 import { TasacionViewAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-view-admin-routed/tasacion-view-admin-routed.component';
 import { TasacionRemoveAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-remove-admin-routed/tasacion-remove-admin-routed.component';
+import { TasacionNewAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-new-admin-routed/tasacion-new-admin-routed.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { TasacionRemoveAdminRoutedComponent } from './component/application/tasa
     TasacionPlistAdminRoutedComponent,
     TasacionViewAdminRoutedComponent,
     TasacionRemoveAdminRoutedComponent,
+    TasacionNewAdminRoutedComponent,
     PaginationComponent,
     SearchUnroutedComponent,
     DropdownRegisterPageComponent,
