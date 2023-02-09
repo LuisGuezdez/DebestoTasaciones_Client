@@ -99,7 +99,5 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
           console.log(err.message);
         }
       })
-
-
   }
 }

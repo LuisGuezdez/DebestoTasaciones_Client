@@ -19,7 +19,6 @@ export class UsuarioFinderAdminUnroutedComponent implements OnInit {
 
   responseFromServer!: IPage<IUsuario>;
   //
-  id_usertypeFilter: number = 0;
   strTermFilter: string = "";
   numberOfElements: number = 5;
   page: number = 0;
@@ -35,21 +34,13 @@ export class UsuarioFinderAdminUnroutedComponent implements OnInit {
 
   constructor(
     private oUsuarioService: UsuarioService,
-    private oRouter: Router
   ) { }
 
   ngOnInit(): void {
-    console.log(this.oRouter.url);
     this.getPage();
   }
 
   getPage() {
-    // if (this.oRouter.url.indexOf("coche")) {
-    //   this.id_usertypeFilter = 2;
-    // }
-    // if (this.oRouter.url.indexOf("compra")) {
-    //   this.id_usertypeFilter = 1;
-    // }
     this.oUsuarioService.getUsuariosPlist(this.page, this.numberOfElements,
       this.strTermFilter, this.tipousuario, this.sortField, this.sortDirection)
       .subscribe({

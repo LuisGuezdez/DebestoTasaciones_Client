@@ -24,7 +24,7 @@ import { IUsuario, IUsuario2Send } from "../model/usuario-interface";
         .set("page", page)
         .set("size", size);
       if (id_usertype != 0) {
-        params = params.set("usertype", id_usertype);
+        params = params.set("id_usertype", id_usertype);
       }
       // if (id_usertype = 1) {
       //   params.set("filter", "empleado")
