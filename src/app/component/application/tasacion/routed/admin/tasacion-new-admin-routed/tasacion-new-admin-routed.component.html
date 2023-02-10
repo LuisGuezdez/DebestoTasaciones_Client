@@ -7,6 +7,25 @@
       <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
 
         <div class="mb-3 row">
+          <label for="inputReserva" class="col-sm-2 col-form-label">Reserva</label>
+          <div class="col-sm-4 has-validation">
+            <input type="datetime-local" class="form-control" [ngClass]="{'is-valid' : oForm.controls.reserva.dirty && !oForm.controls.reserva.errors?.['required'] &&
+            oForm.controls.reserva.dirty && !oForm.controls.reserva.errors?.['pattern'],
+              'is-invalid' :  oForm.controls.reserva.dirty &&  oForm.controls.reserva.errors?.['pattern'] ||
+              oForm.controls.reserva.dirty &&  oForm.controls.reserva.errors?.['required']}" id="inputReserva"
+              formControlName="reserva">
+            <div id="inputReservaFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.reserva.dirty &&  oForm.controls.reserva.errors?.['pattern']">
+              El formato no es adecuado
+            </div>
+            <div id="inputReservaFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.reserva.dirty &&  oForm.controls.reserva.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
           <label for="inputValorcoche" class="col-sm-2 col-form-label">Valor</label>
           <div class="col-sm-4 has-validation">
             <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.valorcoche.dirty && !oForm.controls.valorcoche.errors?.['required'] &&
@@ -17,10 +36,6 @@
             <div id="inputValorcocheFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.valorcoche.dirty &&  oForm.controls.valorcoche.errors?.['pattern']">
               El formato no es adecuado
-            </div>
-            <div id="inputValorcocheFeedback" class="invalid-feedback"
-              *ngIf="oForm.controls.valorcoche.dirty &&  oForm.controls.valorcoche.errors?.['required']">
-              El campo es obligatorio.
             </div>
           </div>
         </div>
@@ -43,10 +58,6 @@
                 ( oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['incorrect'])
               }">
               <button type="button" class="btn btn-primary" (click)="openModalFindUsuario()">Buscar</button>
-            </div>
-            <div class="text-danger"
-              *ngIf="oForm.controls.id_usuario.dirty &&  oForm.controls.id_usuario.errors?.['required']">
-              El campo es obligatorio.
             </div>
           </div>
         </div>
@@ -82,7 +93,7 @@
           <div class="col-sm-6 has-validation">
             <div class="input-group">
               <span class="input-group-text">{{sucursalDescription}}</span>
-              <input type="text" class="form-control" formControlName="id_sucursal" 
+              <input type="number" class="form-control" formControlName="id_sucursal" 
               
               
               (keyup)="updateSucursalDescription(oForm.controls.id_sucursal.value)"
@@ -103,12 +114,10 @@
           </div>
         </div>
 
-        
-
         <button type="submit" class="btn btn-success"
           [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
         
-        <app-coche-bacButton-unrouted class="container"></app-coche-bacButton-unrouted>
+        <app-tasacion-backButton-unrouted class="container"></app-tasacion-backButton-unrouted>
 
       </form>
 
@@ -144,7 +153,7 @@
       </div>
       <div class="modal-body">
 
-        <app-usuario-finder-admin-unrouted (closeEvent)="closeUsuarioModal($event)"></app-usuario-finder-admin-unrouted>
+        <app-usuario-finder-admin-unrouted (closeEvent)="closeUsuarioModal($event)" [tipousuario]="1"></app-usuario-finder-admin-unrouted>
 
       </div>
       <div class="modal-footer">

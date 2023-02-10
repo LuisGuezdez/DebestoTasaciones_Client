@@ -50,12 +50,11 @@ export class TasacionNewAdminRoutedComponent implements OnInit {
   ngOnInit() {
     this.oForm = <FormGroup>this.oFormBuilder.group({
       id: [""],
-      reserva: [""],
-      valorcoche: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
-      id_usuario: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
+      reserva: ["", [Validators.required]],
+      valorcoche: ["", [Validators.pattern(/^\d{1,7}$/)]],
+      id_usuario: ["", [Validators.pattern(/^\d{1,7}$/)]],
       id_coche: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
       id_sucursal: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]]
-
     }); 
   }
 
@@ -71,11 +70,12 @@ export class TasacionNewAdminRoutedComponent implements OnInit {
 
     }
     if (this.oForm.valid) {
+      console.log(this.oTasacion2Send);
       this.oTasacionService.newOne(this.oTasacion2Send).subscribe({
         next: (data: number) => {
           //open bootstrap modal here
           this.modalTitle = "DEBESTO";
-          this.modalContent = "Compra " + data + " created";
+          this.modalContent = "Tasación " + data + " created";
           this.showModal(data);
         }
       })
@@ -89,7 +89,7 @@ export class TasacionNewAdminRoutedComponent implements OnInit {
     var myModalEl = document.getElementById(this.mimodal)!;
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
       console.log(this.oTasacion2Send.id);
-      this.oRouter.navigate(['/admin/compra/view/' + id])
+      this.oRouter.navigate(['/admin/tasacion/view/' + id])
     })
     this.myModal.show()
   }
@@ -160,7 +160,7 @@ export class TasacionNewAdminRoutedComponent implements OnInit {
   updateSucursalDescription(id_sucursal: number) {
     this.oSucursalService.getOne(id_sucursal).subscribe({
       next: (data: ISucursal) => {      
-        this.sucursalDescription = data.nombre;        
+        this.sucursalDescription = data.nombre;  
       },
       error: (error: any) => {
         this.sucursalDescription = "Sucursal no encontrada";        
