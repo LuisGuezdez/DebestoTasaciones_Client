@@ -4,8 +4,8 @@
     <div class="col">
       <h1 class="text-center mb-5">Lista de Tasaciones</h1>
       <div class="col-md text-end d-flex justify-content-center align-items-center mb-3">
-<!--         <a [routerLink]="['/admin/tasacion/new']" class="btn btn-primary mx-3">Realizar Tasacion</a>
- -->        <app-search-unrouted [placeHolder]="'Buscar tasacion'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+        <a [routerLink]="['/admin/tasacion/new']" class="btn btn-primary mx-3">Realizar Tasacion</a>
+        <app-search-unrouted [placeHolder]="'Buscar tasacion'" (onSearch)="setFilter( $event )"></app-search-unrouted>
         <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer.size" (eeRpp)="this.setRpp($event)"></app-dropdown-register-page>
 
       </div>
@@ -47,7 +47,7 @@
             <td>{{tasacion.coche.id}}, {{tasacion.coche.marca}} {{tasacion.coche.modelo}}</td>
             <td>{{tasacion.sucursal.id}}, {{tasacion.sucursal.nombre}}</td>
             <td>
-              <!-- <div class="btn-group" role="group" aria-label="Herramientas">
+              <div class="btn-group" role="group" aria-label="Herramientas">
                 <button class="btn btn-sm btn-primary" [routerLink]="['/admin/tasacion/view',tasacion.id]">
                   <fa-icon [icon]="faEye"></fa-icon>
                 </button>
@@ -57,7 +57,7 @@
                 <button class="btn btn-sm btn-danger" [routerLink]="['/admin','tasacion','remove',tasacion.id]">
                   <fa-icon [icon]="faTrash"></fa-icon>
                 </button>
-              </div> -->
+              </div>
             </td>
           </tr>
         </tbody>
