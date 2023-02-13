@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Events, SessionService } from 'src/app/service/session.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
 
 
-  constructor() {}
+  strUserName: string = "";
+  usertype: string;
+
+
+  constructor(
+    private oSessionService: SessionService,
+    
+  ) {
+    this.strUserName = oSessionService.getUserName();
+    this.usertype = oSessionService.getUsertype();
+
+  }
 
   ngOnInit() {
+    this.oSessionService.on(Events.login).subscribe(
+      (data: string) => {
+        this.strUserName = this.oSessionService.getUserName();
+      });
+    this.oSessionService.on(Events.logout).subscribe(
+      (data: string) => {
+        this.strUserName = '';
+      });
 
   }
 

@@ -31,6 +31,7 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
   // foreigns
   sucursalDescription: string = "";
   usertypeDescription: string = "";
+  
 
   constructor(
     private oRouter: Router,
@@ -38,8 +39,10 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
     private oUsuarioService: UsuarioService,
     private oFormBuilder: FormBuilder,
     private oSucursalService: SucursalService,
-    private oTipousuarioService: TipousuarioService
+    private oTipousuarioService: TipousuarioService,
   ) {
+
+    
     //this.id = oActivatedRoute.snapshot.params['id'];
   }
 

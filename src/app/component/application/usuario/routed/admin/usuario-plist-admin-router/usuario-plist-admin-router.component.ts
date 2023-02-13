@@ -4,6 +4,8 @@ import { IUsuario } from 'src/app/model/usuario-interface';
 import { faEye, faUserPen, faTrash, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { SessionService } from 'src/app/service/session.service';
+import { Router, ɵassignExtraOptionsToRouter } from '@angular/router';
 
 
 @Component({
@@ -32,11 +34,17 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
   generatedUsers!: number;
 
   constructor(
-    private oUsuarioService: UsuarioService
+    private oUsuarioService: UsuarioService,
+    private oSessionService: SessionService,
+    private oRouter: Router
+
   ) { }
 
   ngOnInit() {
     this.getPage();
+    if (this.oSessionService.getUsertype() == "2") {
+      this.oRouter.navigateByUrl('/home')
+    }
   }
 
   getPage() {

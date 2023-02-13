@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/shared/routed/home/home.component';
 import { MenuComponent } from './component/shared/unrouted/menu/menu.component';
 import { UsuarioPlistAdminRouterComponent } from './component/application/usuario/routed/admin/usuario-plist-admin-router/usuario-plist-admin-router.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PaginationService } from './service/pagination.service';
@@ -51,6 +51,11 @@ import { TasacionPlistAdminRoutedComponent } from './component/application/tasac
 import { TasacionViewAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-view-admin-routed/tasacion-view-admin-routed.component';
 import { TasacionRemoveAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-remove-admin-routed/tasacion-remove-admin-routed.component';
 import { TasacionNewAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-new-admin-routed/tasacion-new-admin-routed.component';
+import { LoginComponent } from './component/shared/routed/login/login.component';
+import { LogoutComponent } from './component/shared/routed/logout/logout.component';
+import { AuthInterceptor } from './component/interceptor/auth.interceptor';
+import { CryptoService } from './service/crypto.service';
+import { DecodeService } from './service/decode.service';
 
 @NgModule({
   declarations: [
@@ -98,7 +103,9 @@ import { TasacionNewAdminRoutedComponent } from './component/application/tasacio
     SearchUnroutedComponent,
     DropdownRegisterPageComponent,
     PaginationUnroutedComponent,
-    TipousuarioFinderAdminUnroutedComponent
+    TipousuarioFinderAdminUnroutedComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +116,10 @@ import { TasacionNewAdminRoutedComponent } from './component/application/tasacio
     FontAwesomeModule
   ],
   providers: [
-    PaginationService
+    PaginationService,
+    CryptoService,
+    DecodeService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

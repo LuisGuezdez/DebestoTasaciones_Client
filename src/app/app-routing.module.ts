@@ -26,6 +26,8 @@ import { TasacionPlistAdminRoutedComponent } from './component/application/tasac
 import { TasacionViewAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-view-admin-routed/tasacion-view-admin-routed.component';
 import { TasacionRemoveAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-remove-admin-routed/tasacion-remove-admin-routed.component';
 import { TasacionNewAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-new-admin-routed/tasacion-new-admin-routed.component';
+import { LoginComponent } from './component/shared/routed/login/login.component';
+import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -54,6 +56,8 @@ const routes: Routes = [
   { path: 'admin/tasacion/view/:id', component: TasacionViewAdminRoutedComponent},
   { path: 'admin/tasacion/remove/:id', component: TasacionRemoveAdminRoutedComponent},
   { path: 'admin/tasacion/new', component: TasacionNewAdminRoutedComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'logout', component: LogoutComponent},
 
 ];
 
