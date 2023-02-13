@@ -88,8 +88,6 @@ export class CochePlistAdminRoutedComponent implements OnInit {
     ide: number;
 
     openModalFindUsuario(ide):void {
-      console.log(ide)
-      this.id = ide;
       
       this.myModal = new bootstrap.Modal(document.getElementById("showUsuario"), { //pasar el myModal como parametro
         keyboard: false
