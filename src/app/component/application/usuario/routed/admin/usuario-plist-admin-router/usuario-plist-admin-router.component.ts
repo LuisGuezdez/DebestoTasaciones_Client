@@ -62,6 +62,7 @@ export class UsuarioPlistAdminRouterComponent implements OnInit {
           console.log(err);
         }
       })
+      console.log(this.oSessionService.getUserId());
   }
 
   setPage(e: number) {

@@ -56,6 +56,7 @@ import { LogoutComponent } from './component/shared/routed/logout/logout.compone
 import { AuthInterceptor } from './component/interceptor/auth.interceptor';
 import { CryptoService } from './service/crypto.service';
 import { DecodeService } from './service/decode.service';
+import { UsuarioHomeClienteRoutedComponent } from './component/application/usuario/routed/cliente/usuario-home-cliente-routed/usuario-home-cliente-routed.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { DecodeService } from './service/decode.service';
     UsuarioNewAdminRoutedComponent,
     UsuarioBackButtonUnroutedComponent,
     UsuarioEditAdminRoutedComponent,
+    UsuarioHomeClienteRoutedComponent,
     SucursalPlistAdminRoutedComponent,
     SucursalFinderAdminUnroutedComponent,
     SucursalDetailAdminUnroutedComponent,

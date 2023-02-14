@@ -28,11 +28,13 @@ import { TasacionRemoveAdminRoutedComponent } from './component/application/tasa
 import { TasacionNewAdminRoutedComponent } from './component/application/tasacion/routed/admin/tasacion-new-admin-routed/tasacion-new-admin-routed.component';
 import { LoginComponent } from './component/shared/routed/login/login.component';
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
+import { UsuarioHomeClienteRoutedComponent } from './component/application/usuario/routed/cliente/usuario-home-cliente-routed/usuario-home-cliente-routed.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'admin/usuario/plist', component: UsuarioPlistAdminRouterComponent },
+  { path: 'cliente/usuario/home', component: UsuarioHomeClienteRoutedComponent },
   { path: 'admin/usuario/view/:id', component: UsuarioViewAdminRoutedComponent },
   { path: 'admin/usuario/remove/:id', component: UsuarioRemoveAdminRoutedComponent },
   { path: 'admin/usuario/new', component: UsuarioNewAdminRoutedComponent },

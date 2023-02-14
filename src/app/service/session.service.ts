@@ -45,6 +45,15 @@ export class SessionService {
         }
     }
 
+    getUserId(): string {
+        if (!this.isSessionActive()) {
+            return "";
+        } else {
+            let token: string = localStorage.getItem("token");
+            return this.oDecodeService.parseJwt(token).id_user;
+        }
+    }
+
     getUsertype(): string {
         if (!this.isSessionActive()) {
             return "";

@@ -5,4 +5,5 @@ export interface IToken {
     exp: number;
     name: string;
     usertype: string;
+    id_user: string;
 }

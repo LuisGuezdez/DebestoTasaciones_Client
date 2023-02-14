@@ -17,8 +17,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.oSessionService.getUsertype());
+    console.log(this.oSessionService.getUserId());
     if (this.oSessionService.getUsertype() == "") {
       this.oRouter.navigateByUrl('/login')
+    }else if (this.oSessionService.getUsertype()=="2") {
+      this.oRouter.navigate(['/cliente/usuario/home']);
     }
   }
 
