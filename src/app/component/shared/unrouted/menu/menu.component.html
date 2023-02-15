@@ -28,11 +28,10 @@
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="user" *ngIf="strUserName">Logged
-            in as: {{strUserName}}</a>
+          <a class="btn btn-outline-light me-3" aria-current="page" routerLinkActive="active" [routerLink]="['/admin/usuario/view',id_user]" *ngIf="strUserName">Usuario: {{strUserName}}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="logout"
+        <li class="nav-item me-5">
+          <a class="btn btn-outline-danger" aria-current="page" routerLinkActive="active" routerLink="logout"
             *ngIf="strUserName">Logout</a>
         </li>
       </ul>

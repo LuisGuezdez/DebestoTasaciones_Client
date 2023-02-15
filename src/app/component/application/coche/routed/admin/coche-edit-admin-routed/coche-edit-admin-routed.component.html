@@ -114,8 +114,8 @@
           </div>
         </div>
 
-        <div class="mb-3 row">
-          <label for="inputUsuario" class="col-sm-2 col-form-label">ID Usuario</label>
+        <div class="mb-3 row" *ngIf="this.usertype==1">
+          <label for="inputUsuario"  class="col-sm-2 col-form-label">ID Usuario</label>
           <div class="col-sm-6 has-validation">
             <div class="input-group">
               <span class="input-group-text">{{usuarioDescription}}</span>
@@ -145,8 +145,8 @@
         <button type="submit" class="btn btn-success"
           [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
         
-        <app-coche-bacButton-unrouted class="container"></app-coche-bacButton-unrouted>
-        <button type="button" class="btn btn-primary" (click)="oLocation.back()">Atrás</button>
+        <app-coche-bacButton-unrouted class="container" *ngIf="this.usertype==1"></app-coche-bacButton-unrouted>
+        <button type="button" class="btn btn-primary ms-3" (click)="oLocation.back()">Atrás</button>
 
       </form>
 
@@ -173,7 +173,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="findUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="findUsuario"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">

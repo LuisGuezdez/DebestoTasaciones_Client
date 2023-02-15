@@ -7,6 +7,7 @@ import { CocheService } from 'src/app/service/coche.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SessionService } from 'src/app/service/session.service';
 
 declare let bootstrap: any;
 
@@ -33,15 +34,21 @@ export class CocheEditAdminRoutedComponent implements OnInit {
   combDescription: string = "";
   error: HttpErrorResponse;
 
+  id_user: number;
+  usertype: number;
+
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     private oCocheService: CocheService,
     private oFormBuilder: FormBuilder,
+    private oSessionService: SessionService,
     private oUsuarioService: UsuarioService,
     public oLocation: Location
   ) {
     this.id = oActivatedRoute.snapshot.params['id'];
+    this.id_user = parseInt(this.oSessionService.getUserId());
+    this.usertype = parseInt(oSessionService.getUsertype());
   }
 
   ngOnInit() {

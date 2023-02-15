@@ -100,7 +100,7 @@
           </div>
         </div>
 
-        <div class="mb-3 row" *ngIf="this.id_user==1">
+        <div class="mb-3 row" *ngIf="this.usertype==1">
           <label for="inputSucursal" class="col-sm-2 col-form-label">ID Sucursal</label>
           <div class="col-sm-6 has-validation">
             <div class="input-group">
@@ -127,7 +127,7 @@
         </div>
 
 
-        <div class="mb-5 row" *ngIf="this.id_user==1">
+        <div class="mb-5 row" *ngIf="this.usertype==1">
           <label for="inputUsertype" class="col-sm-2 col-form-label">ID de Tipo Usuario</label>
           <div class="col-sm-6 has-validation">
             <div class="input-group">
@@ -157,8 +157,8 @@
 
         <button type="submit" class="btn btn-success"
           [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
-        <app-usuario-backButton-unrouted></app-usuario-backButton-unrouted>
-        <button type="button" id="atras" class="btn btn-primary" (click)="oLocation.back()">Atrás</button>
+        <app-usuario-backButton-unrouted *ngIf="this.usertype==1"></app-usuario-backButton-unrouted>
+        <button type="button" id="atras" class="btn btn-primary ms-3" (click)="oLocation.back()">Atrás</button>
       </form>
 
     </div>

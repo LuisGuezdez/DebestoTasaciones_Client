@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { EmitEvent, Events, SessionService } from 'src/app/service/session.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { faEye, faUserPen, faTrash, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { CocheService } from 'src/app/service/coche.service';
+import { Location } from '@angular/common';
+
 
 declare let bootstrap: any;
 
@@ -22,9 +25,11 @@ export class UsuarioHomeClienteRoutedComponent implements OnInit {
   faArrowDown = faArrowDown;
 
   constructor(
+    private oCocheService: CocheService,
     private oUsuarioService: UsuarioService,
     private oSessionService: SessionService,
-    private oRouter: Router
+    private oRouter: Router,
+    public oLocation: Location
   ) {
     this.id_user = parseInt(oSessionService.getUserId());
   }

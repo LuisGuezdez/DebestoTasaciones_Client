@@ -3,24 +3,30 @@
     <div class="col">
       <h1 class="text-center mb-5">Usuario: {{this.username}}</h1>
       <app-usuario-detail-admin-unrouted [id]="id_user"></app-usuario-detail-admin-unrouted>
-      <button class="text-center btn btn-sm btn-warning" [routerLink]="['/admin/usuario/edit',id_user]">
-        <fa-icon [icon]="faUserPen"></fa-icon>
-      </button>
-      <button class="btn btn-sm btn-danger ms-3" (click)="openModal()">
-        <fa-icon [icon]="faTrash"></fa-icon>
-      </button>
-      <div>
-        <app-coche-plist-cliente-unrouted></app-coche-plist-cliente-unrouted>
+      <div class="text-center mt-3">
+        <button class="text-center btn btn-sm btn-warning" [routerLink]="['/admin/usuario/edit',id_user]">
+          Editar usuario
+        </button>
+        <button class="btn btn-sm btn-danger ms-3" (click)="openModal()">
+          Eliminar usuario
+        </button>
       </div>
     </div>
-    <div class="col">
-      <h1 class="text-center mb-5">Tasación rápida</h1>
-      <form >
-        <p>Marca: <input type="text" name="nombre" size="40"></p>
-        <p>Modelo: <input type="number" name="nacido" min="1900"></p>
-        <p>Año: <input type="number">
-        </p>
-      </form>
+    <div class="row mt-3">
+      <div class="col">
+        <div>
+          <app-coche-plist-cliente-unrouted></app-coche-plist-cliente-unrouted>
+        </div>
+      </div>
+      <div class="col">
+        <h1 class="text-center mb-5">Tasación rápida</h1>
+        <form >
+          <p>Marca: <input type="text" name="nombre" size="40"></p>
+          <p>Modelo: <input type="number" name="nacido" min="1900"></p>
+          <p>Año: <input type="number">
+          </p>
+        </form>
+      </div>
     </div>
   </div>
 </div>

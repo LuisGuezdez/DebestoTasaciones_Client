@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
 
   strUserName: string = "";
   usertype: string;
+  id_user: number;
 
 
   constructor(
@@ -19,7 +20,7 @@ export class MenuComponent implements OnInit {
   ) {
     this.strUserName = oSessionService.getUserName();
     this.usertype = oSessionService.getUsertype();
-
+    this.id_user = parseInt(oSessionService.getUserId());
   }
 
   ngOnInit() {
