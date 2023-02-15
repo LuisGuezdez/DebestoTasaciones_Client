@@ -9,6 +9,7 @@ import { TipousuarioService } from 'src/app/service/tipousuario.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Location} from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SessionService } from 'src/app/service/session.service';
 
 
 declare let bootstrap: any;
@@ -33,10 +34,13 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
   error: HttpErrorResponse;
   sucursalDescription: string = "";
   usertypeDescription: string = "";
+  id_user: number;
+  usertype: number;
 
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
+    private oSessionService: SessionService,
     private oUsuarioService: UsuarioService,
     private oFormBuilder: FormBuilder,
     private oSucursalService: SucursalService,
@@ -44,6 +48,8 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
     public oLocation: Location
   ) {
     this.id = oActivatedRoute.snapshot.params['id'];
+    this.id_user = parseInt(this.oSessionService.getUserId());
+    this.usertype = parseInt(oSessionService.getUsertype());
   }
 
   ngOnInit() {
@@ -100,7 +106,11 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
     var myModalEl = document.getElementById(this.mimodal)!;
     myModalEl.addEventListener('hidden.bs.modal', (event): void => {
       console.log(this.oUsuario2Send.id);
-      this.oRouter.navigate(['/admin/usuario/view/' + id])
+      if (this.usertype==2) {
+        this.oLocation.back();
+      }else{
+        this.oRouter.navigate(['/admin/usuario/view/' + id])
+      }
     })
     this.myModal.show()
   }

@@ -29,6 +29,7 @@ import { TasacionNewAdminRoutedComponent } from './component/application/tasacio
 import { LoginComponent } from './component/shared/routed/login/login.component';
 import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 import { UsuarioHomeClienteRoutedComponent } from './component/application/usuario/routed/cliente/usuario-home-cliente-routed/usuario-home-cliente-routed.component';
+import { CochePlistClienteUnroutedComponent } from './component/application/coche/unrouted/cliente/coche-plist-cliente-unrouted/coche-plist-cliente-unrouted.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,6 +50,7 @@ const routes: Routes = [
   { path: 'admin/coche/remove/:id', component: CocheRemoveAdminRoutedComponent},
   { path: 'admin/coche/edit/:id', component: CocheEditAdminRoutedComponent},
   { path: 'admin/coche/new', component: CocheNewAdminRoutedComponent},
+  { path: 'cliente/coche/plist', component: CochePlistClienteUnroutedComponent},
   { path: 'admin/compra/plist', component: CompraPlistAdminRoutedComponent},
   { path: 'admin/compra/view/:id', component: CompraViewAdminRoutedComponent},
   { path: 'admin/compra/remove/:id', component: CompraRemoveAdminRoutedComponent},

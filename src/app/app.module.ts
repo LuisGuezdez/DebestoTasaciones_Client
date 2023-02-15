@@ -57,6 +57,7 @@ import { AuthInterceptor } from './component/interceptor/auth.interceptor';
 import { CryptoService } from './service/crypto.service';
 import { DecodeService } from './service/decode.service';
 import { UsuarioHomeClienteRoutedComponent } from './component/application/usuario/routed/cliente/usuario-home-cliente-routed/usuario-home-cliente-routed.component';
+import { CochePlistClienteUnroutedComponent } from './component/application/coche/unrouted/cliente/coche-plist-cliente-unrouted/coche-plist-cliente-unrouted.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { UsuarioHomeClienteRoutedComponent } from './component/application/usuar
     CocheRemoveAdminRoutedComponent,
     CocheViewAdminRoutedComponent,
     CocheFinderAdminUnroutedComponent,
+    CochePlistClienteUnroutedComponent,
     CompraBacButtonAdminUnroutedComponent,
     CompraDetailAdminUnroutedComponent,
     CompraPlistAdminRoutedComponent,

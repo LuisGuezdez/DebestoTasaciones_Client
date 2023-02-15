@@ -1,8 +1,50 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col">
-      <h1 class="text-center mb-5">Home de usuario: {{this.username}}</h1>      
-
+      <h1 class="text-center mb-5">Usuario: {{this.username}}</h1>
+      <app-usuario-detail-admin-unrouted [id]="id_user"></app-usuario-detail-admin-unrouted>
+      <button class="text-center btn btn-sm btn-warning" [routerLink]="['/admin/usuario/edit',id_user]">
+        <fa-icon [icon]="faUserPen"></fa-icon>
+      </button>
+      <button class="btn btn-sm btn-danger ms-3" (click)="openModal()">
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </button>
+      <div>
+        <app-coche-plist-cliente-unrouted></app-coche-plist-cliente-unrouted>
+      </div>
     </div>
+    <div class="col">
+      <h1 class="text-center mb-5">Tasación rápida</h1>
+      <form >
+        <p>Marca: <input type="text" name="nombre" size="40"></p>
+        <p>Modelo: <input type="number" name="nacido" min="1900"></p>
+        <p>Año: <input type="number">
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="removeInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <!-- <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div> -->
+          <div class="modal-body">
+            <div class="alert alert-danger my-3" role="alert">
+                <h3>¿Está seguro que quiere borrar el usuario?</h3>
+                <div class="d-grid gap-2 d-md-block mt-3 d-md-flex justify-content-md-center my-4">
+                    <a class="btn btn-danger mx-2" (click)="removeOne()">
+                        SI</a>
+                    <a class="btn btn-success mx-2" data-bs-dismiss="modal">
+                        NO </a>
+                </div>
+            </div>
+          </div>
+          <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div> -->
+      </div>
   </div>
 </div>

@@ -5,15 +5,13 @@ import { IPage } from 'src/app/model/generic-types-interface';
 import { CocheService } from 'src/app/service/coche.service';
 import { faEye, faUserPen, faTrash, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-declare let bootstrap: any;
-
 
 @Component({
-  selector: 'app-coche-plist-admin-routed',
-  templateUrl: './coche-plist-admin-routed.component.html',
-  styleUrls: ['./coche-plist-admin-routed.component.css']
+  selector: 'app-coche-plist-cliente-unrouted',
+  templateUrl: './coche-plist-cliente-unrouted.component.html',
+  styleUrls: ['./coche-plist-cliente-unrouted.component.css']
 })
-export class CochePlistAdminRoutedComponent implements OnInit {
+export class CochePlistClienteUnroutedComponent implements OnInit {
 
   @Output() closeEvent = new EventEmitter<number>();
 
@@ -85,13 +83,5 @@ export class CochePlistAdminRoutedComponent implements OnInit {
       }
       this.getPage();
     }
-
-    openModalFindUsuario(id: number):void {
-      this.id = id;
-      this.myModal = new bootstrap.Modal(document.getElementById("showUsuario"), { //pasar el myModal como parametro
-        keyboard: false
-      })
-      this.myModal.show()
-      }
 
 }

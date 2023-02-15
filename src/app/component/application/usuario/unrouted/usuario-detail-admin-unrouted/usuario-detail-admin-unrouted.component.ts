@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IUsuario } from 'src/app/model/usuario-interface';
+import { SessionService } from 'src/app/service/session.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
@@ -18,18 +19,28 @@ export class UsuarioDetailAdminUnroutedComponent implements OnInit {
     this.getOne();
   };
 
+  id_user: number;
+  usertype: string;
 
   oUsuario: IUsuario;
 
   constructor(
-    private oUsuarioService: UsuarioService
-  ) { }
+    private oUsuarioService: UsuarioService,
+    private oSessionService: SessionService
+
+  ) { 
+    this.id_user = parseInt(this.oSessionService.getUserId());
+    this.usertype = oSessionService.getUsertype();
+  }
 
   ngOnInit() {
     this.getOne();
   }
 
   getOne() {
+    // if (this.oSessionService.getUsertype() == "2") {
+    //   this._id = this.id_user;
+    // }
     if (this._id > 0) {
       this.oUsuarioService.getOne(this._id).subscribe({
         next: (data: IUsuario) => {

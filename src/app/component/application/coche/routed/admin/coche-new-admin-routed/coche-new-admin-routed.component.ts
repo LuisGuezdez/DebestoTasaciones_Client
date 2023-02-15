@@ -5,7 +5,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ICoche, ICoche2Form, ICoche2Send } from 'src/app/model/coche-interface';
 import { IUsuario } from 'src/app/model/usuario-interface';
 import { CocheService } from 'src/app/service/coche.service';
+import { SessionService } from 'src/app/service/session.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { Location} from '@angular/common';
 
 declare let bootstrap: any;
 
@@ -30,15 +32,21 @@ export class CocheNewAdminRoutedComponent implements OnInit {
   modalContent: string = "";
   // foreigns
   usuarioDescription: string = "";
+  usertype: number;
+  id_user: number;
 
   constructor(
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
     private oCocheService: CocheService,
     private oFormBuilder: FormBuilder,
-    private oUsuarioService: UsuarioService
+    private oUsuarioService: UsuarioService,
+    private oSessionService: SessionService,
+    public oLocation: Location
   ) {
     //this.id = oActivatedRoute.snapshot.params['id'];
+    this.usertype = parseInt(oSessionService.getUsertype());
+    this.id_user = parseInt(oSessionService.getUserId());
   }
 
   ngOnInit() {
@@ -48,7 +56,7 @@ export class CocheNewAdminRoutedComponent implements OnInit {
       modelo: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       anyo: ["", [Validators.required, Validators.pattern(/^(19[0-9][0-9]|20[0-1][0-9]|20[0-2][0-3])$/)]],
       kms: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
-      id_usuario: ["", [Validators.required, Validators.pattern(/^\d{1,7}$/)]],
+      id_usuario: [""/*, [Validators.required, Validators.pattern(/^\d{1,7}$/)]*/],
       combustible: [""]
     }); 
     console.log(this.oRouter.url);
@@ -56,14 +64,25 @@ export class CocheNewAdminRoutedComponent implements OnInit {
 
   onSubmit() {
     console.log("onSubmit");
-    this.oCoche2Send = {
-      id: this.oForm.value.id!,
-      marca: this.oForm.value.marca!,
-      modelo: this.oForm.value.modelo!,
-      anyo: this.oForm.value.anyo!,
-      kms: this.oForm.value.kms!,
-      combustible: this.oForm.value.combustible!,
-      usuario: { id: this.oForm.value.id_usuario}
+    if (this.usertype == 2) {
+      this.oCoche2Send = {
+        id: this.oForm.value.id!,
+        marca: this.oForm.value.marca!,
+        modelo: this.oForm.value.modelo!,
+        anyo: this.oForm.value.anyo!,
+        kms: this.oForm.value.kms!,
+        combustible: this.oForm.value.combustible!,
+        usuario: { id: this.id_user}}
+     }else{
+       this.oCoche2Send = {
+         id: this.oForm.value.id!,
+         marca: this.oForm.value.marca!,
+         modelo: this.oForm.value.modelo!,
+         anyo: this.oForm.value.anyo!,
+         kms: this.oForm.value.kms!,
+         combustible: this.oForm.value.combustible!,
+         usuario: { id: this.oForm.value.id_usuario}
+       }
     }
     if (this.oForm.valid) {
       this.oCocheService.newOne(this.oCoche2Send).subscribe({

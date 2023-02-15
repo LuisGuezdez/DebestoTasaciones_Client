@@ -20,11 +20,11 @@
         <td>Username</td>
         <td>{{oUsuario.username}}</td>
     </tr>
-    <tr>
+    <tr *ngIf="this.usertype == '1'">
         <td>Tipo Usuario</td>
         <td>{{oUsuario.tipousuario.id}}-{{oUsuario.tipousuario.tipo}}</td>
     </tr>
-    <tr id="sucursal">
+    <tr id="sucursal" *ngIf="this.usertype == '1'">
         <!-- <td>Sucursal</td>
         <td>{{oUsuario.sucursal.nombre}}</td> -->
     </tr>

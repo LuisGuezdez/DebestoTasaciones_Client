@@ -113,7 +113,7 @@
           </div>
         </div>
 
-        <div class="mb-3 row">
+        <div class="mb-3 row" *ngIf="usertype == 1">
           <label for="inputUsuario" class="col-sm-2 col-form-label">ID Usuario</label>
           <div class="col-sm-6 has-validation">
             <div class="input-group">
@@ -144,7 +144,8 @@
         <button type="submit" class="btn btn-success"
           [disabled]="!oForm.dirty || (oForm.invalid && oForm.dirty)">Guardar</button>
         
-        <app-coche-bacButton-unrouted class="container"></app-coche-bacButton-unrouted>
+        <app-coche-bacButton-unrouted class="container" *ngIf="usertype == 2"></app-coche-bacButton-unrouted>
+        <button class="btn btn-primary ms-5" (click)="oLocation.back()">Atrás</button>
 
       </form>
 
